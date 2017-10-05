@@ -1,0 +1,52 @@
+// Address List
+.address-list {
+    padding-top: 20px;
+
+    &__item {
+        border-bottom: 1px solid #eceeef;
+        border-top: 1px solid #eceeef;
+        margin-bottom: 20px;
+
+        @media (max-width: $screen-xs-min) {
+            &:nth-child(2n){
+                border-left: 1px solid #eceeef;
+            }
+        }
+
+        @media (max-width: $screen-sm-max) {
+            &:nth-child(2n-1){
+                border-left: 1px solid #eceeef;
+            }
+        }
+
+        @media (min-width: $screen-md-min) {
+            &:nth-child(3n-2){
+                border-left: 1px solid #eceeef;
+            }
+        }
+
+        &:nth-of-type(n-1){
+            border-right: 1px solid #eceeef;
+        }
+    }
+}
+
+.address-card {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+
+    &__header {
+        @include clearfix;
+    }
+
+    &__media {
+        float: left;
+    }
+
+    &__title {
+        display: table-cell;
+        vertical-align: top;
+        padding: 0.75rem;
+        font-size: 1.2rem;
+    }
+}

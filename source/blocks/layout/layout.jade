@@ -1,0 +1,127 @@
+include ../scripts/scripts
+
+doctype html
+html(lang='ru')
+	block analitics
+		-var connonicalPage = '';
+	include ../head/head
+	body
+		#app.app.app-navbar-fixed.app-sidebar-fixed.app-footer-fixed
+			// start sidebar
+			#sidebar.sidebar.app-aside
+				.sidebar-container.perfect-scrollbar
+					nav
+						.navbar-title
+							span Меню
+						ul.main-navigation-menu
+							each value in sidebar
+								li(class= (value.page == page) ? 'active' : '')
+									a(href=value.link)
+										.item-content
+											.item-media
+												i(class=value.icon)
+											.item-inner
+												span.title!= value.title
+			// end sidebar
+			.app-content
+				// top navbar
+				header.navbar.navbar-default.navbar-toggleable-sm
+					// navbar header
+					.navbar-header
+						a.sidebar-mobile-toggler.hidden-lg-up(data-toggle-class="app-slide-off" data-toggle-target="#app" data-toggle-click-outside="#sidebar" href="#")
+							i.ti-align-justify
+						a.navbar-brand(href="#")
+							img(src="content/images/logo-sps.png" alt="СП Сервис")
+						a#menu-toggler.pull-right.menu-toggler.hidden-md-up(data-toggle="collapse" href=".navbar-collapse")
+							span.sr-only Toggle navigation
+							i.ti-view-grid
+					// end navbar header
+					// navbar collapse
+					.navbar-collapse.collapse
+						ul.nav.navbar-nav.ml-auto
+							// start: MESSAGES DROPDOWN
+							li.nav-item.dropdown
+								a.nav-link.dropdown-toggle(href="#" data-toggle="dropdown")
+									span.dot-badge.partition-red
+									i.ti-comment
+									span MESSAGES
+								ul.dropdown-menu.dropdown-light.dropdown-messages.dropdown-large
+									li
+										span.dropdown-header Unread messages
+									li
+										.drop-down-wrapper.ps-container
+											ul
+												li.unread
+													a.unread(href="javascript:;")
+														.clearfix
+															.thread-image
+																img(src="./assets/images/avatar-2.jpg" alt="")
+															.thread-content
+																span.author Nicole Bell
+																span.preview Duis mollis, est non commodo luctus, nisi erat porttitor ligula...
+																span.time Just Now
+												li
+													a.unread(href="javascript:;")
+														.clearfix
+															.thread-image
+																img(src="./assets/images/avatar-3.jpg" alt="")
+															.thread-content
+																span.author Steven Thompson
+																span.preview Duis mollis, est non commodo luctus, nisi erat porttitor ligula...
+																span.time 8 hrs
+												li
+													a(href="javascript:;")
+														.clearfix
+															.thread-image
+																img(src="./assets/images/avatar-5.jpg" alt="")
+															.thread-content
+																span.author Kenneth Ross
+																span.preview Duis mollis, est non commodo luctus, nisi erat porttitor ligula...
+																span.time 14 hrs
+									li.view-all
+										a(href="#") See All
+							// end: MESSAGES DROPDOWN
+							// start: USER OPTIONS DROPDOWN
+							li.nav-item.dropdown.current-user
+								a.nav-link.dropdown-toggle(href="#" data-toggle="dropdown")
+									img(src="content/images/noavatar.png" alt="User Name")
+									span.username User Name
+										i.ti-angle-down
+								ul.dropdown-menu.dropdown-light
+									li
+										a(href="pages_user_profile.html") My Profile
+									li
+										a(href="pages_calendar.html") My Calendar
+									li
+										a(href="pages_messages.html") My Messages (3)
+									li
+										a(href="login_signin.html") Log Out
+							// end: USER OPTIONS DROPDOWN
+						// start: MENU TOGGLER FOR MOBILE DEVICES
+						.close-handle.menu-toggler.hidden-md-up(data-toggle="collapse" href=".navbar-collapse")
+							.arrow-left
+							.arrow-right
+						// end: MENU TOGGLER FOR MOBILE DEVICES
+				// end top navbar
+				.main-content
+					#container.wrap-content.container
+						block content
+					include ../Widgets/modal/modal
+			// start footer
+			footer
+				.footer-inner
+					.pull-left &copy;
+						| 
+						span.current-year
+						| 
+						a.text-uppercase(href="#") DGolovin
+					.pull-right
+						span.go-top
+							i.ti-angle-up
+			// end footer
+
+			//- include ../Widgets/footer/footer
+
+		+scripts(['vendor/jquery-3.2.1.min.js', 'vendor/tether.min.js', 'vendor/bootstrap.min.js', 'vendor/perfect-scrollbar.min.js'])
+		block scripts
+		script(src="assets/js/main.js")

@@ -1,0 +1,37 @@
+block page
+	-var page = "point";
+
+extends ../blocks/layout/layout
+
+block content
+	.main-content-title
+		.row
+			.col-12
+				h1.page-title Пункты выдачи
+	.container-fluid
+		.address-list
+			.row
+				each value in addressList
+					.col-12.col-sm-6.col-lg-4.address-list__item
+						.address-card
+							.address-card__header
+								img.address-card__media(src="content/images/noavatar.png")
+								.address-card__title!= value.name
+							.address-card__content
+								table.table
+									tbody
+										if(value.phone)
+											tr
+												td Номер телефона:
+												td!= value.phone
+										tr
+											td Адрес:
+											td!= value.address
+										tr
+											td Время работы:
+											td!= value.works
+										tr
+											td(colspan="2")
+												a(href="#")
+													i.ti-location-pin
+													|  Посмотреть на&nbsp;карте

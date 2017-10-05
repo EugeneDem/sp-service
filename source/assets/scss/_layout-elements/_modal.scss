@@ -1,0 +1,169 @@
+.ps-container .ps-scrollbar-x-rail:hover,
+.ps-container .ps-scrollbar-x-rail.hover {
+  background-color: #eee !important;
+}
+
+.ps-container .ps-scrollbar-y-rail {
+  -moz-transition: all 300ms !important;
+  -o-transition: all 300ms !important;
+  -webkit-transition: all 300ms !important;
+  transition: all 300ms !important;
+  width: 4px !important;
+}
+
+.ps-container .ps-scrollbar-y {
+  -moz-transition: all 300ms !important;
+  -o-transition: all 300ms !important;
+  -webkit-transition: all 300ms !important;
+  transition: all 300ms !important;
+  width: 4px !important;
+}
+
+.ps-container:hover .ps-scrollbar-y-rail,
+.ps-container.hover .ps-scrollbar-y-rail {
+  -moz-transition: all 300ms !important;
+  -o-transition: all 300ms !important;
+  -webkit-transition: all 300ms !important;
+  transition: all 300ms !important;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=40);
+  opacity: 0.4;
+  width: 4px !important;
+}
+
+.ps-container .ps-scrollbar-y-rail:hover,
+.ps-container .ps-scrollbar-y-rail.hover,
+.ps-container .ps-scrollbar-y-rail.in-scrolling {
+  background-color: #eee;
+  width: 10px !important;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
+  opacity: 0.6;
+}
+
+.ps-container .ps-scrollbar-y-rail:hover .ps-scrollbar-y,
+.ps-container .ps-scrollbar-y-rail.hover .ps-scrollbar-y,
+.ps-container .ps-scrollbar-y-rail.in-scrolling .ps-scrollbar-y {
+  background-color: #999;
+  width: 10px !important;
+}
+
+.perfect-scrollbar {
+  overflow-y: hidden !important;
+  position: relative;
+}
+
+.touch .perfect-scrollbar {
+  overflow-y: scroll !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+
+.modal-backdrop {
+    z-index: 9998 !important;
+}
+
+.modal, .modal-dialog {
+    z-index: 9999 !important;
+}
+
+.map-wrap {
+    position: relative;
+
+    &__content {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    &__nav {
+        background-color: #fff;
+        width: 260px;
+        position: relative;
+        z-index: 1;
+    }
+
+    &__nav-scrollbar {
+        height: 400px;
+        position: relative;
+        overflow-y: hidden !important;
+        padding-right: 10px;
+        box-sizing: border-box;
+    }
+
+    &__nav-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    &__nav-list-item {
+        padding-top: 10px;
+        padding-bottom: 7px;
+        padding-right: 22px;
+        position: relative;
+        cursor: pointer;
+
+        &:before {
+            position: absolute;
+            top: 18px;
+            right: 4px;
+            content: "\e64c";
+            display: none;
+            font-family: themify;
+            font-size: 16px;
+            line-height: 1;
+            color: #449d44;
+        }
+
+        &.is-active {
+            &:before {
+                display: block;
+            }
+        }
+    }
+
+    &__nav-list-item + &__nav-list-item {
+        border-top: 1px solid #c8c7cc;
+    }
+
+    &__nav-list-item:hover &__nav-title {
+        color: #014c8c;
+    }
+
+    &__nav-title {
+        font-size: 1rem;
+        margin-bottom: 0.15rem;
+    }
+
+    &__nav-text {
+        font-size: 0.85rem;
+        margin-bottom: 0.2rem;
+        color: #8e8e93;
+    }
+
+    &__cluster {
+        width: 28px;
+        height: 28px;
+        font-size: 12px;
+        line-height: 28px;
+        color: #fff;
+        text-align: center;
+    }
+
+    &__balloon {
+        padding: 10px 0 10px 10px;
+        box-sizing: border-box;
+
+        .btn {
+            width: 100%;
+            margin-top: 12px;
+        }
+    }
+
+    &__balloon-address {
+        font-weight: 700;
+        font-size: 14px;
+        margin-bottom: 6px;
+    }
+}

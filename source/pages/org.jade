@@ -1,0 +1,27 @@
+block page
+	-var page = "org";
+
+extends ../blocks/layout/layout
+
+block content
+	.main-content-title
+		.row
+			.col-12
+				h1.page-title Контакты организаторов
+	.container-fluid.container-fullw
+		.contact-list
+			.row
+				each value in contactList
+					.col-12.col-sm-6.col-lg-4.col-xl-3.contact-list__item
+						.contact-item
+							.contact-item__media
+								.contact-item__image
+									img(src=value.image alt=value.name)
+								.contact-item__hover
+									.contact-item__hover-wrap
+										.contact-item__hover-content
+											a.contact-item__target(href="#" target="_blank") Написать
+											a.contact-item__target.hidden-md-up(href="call:"+ value.phone) Позвонить
+							.contact-item__content
+								.contact-item__title!= value.name
+								.contact-item__description!= value.phone

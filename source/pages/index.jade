@@ -1,0 +1,137 @@
+block page
+	-var page = "index";
+
+extends ../blocks/layout/layout
+
+block scripts
+	script(src="https://api-maps.yandex.ru/2.1/?lang=ru_RU")
+
+block content
+	.main-content-title
+		.row
+			.col-12
+				h1.page-title Вы учавствуете в следующих закупках
+	.container-fluid.container-fullw
+		h3 Вы пока не участвуете ни в одной закупке!
+		p В настоящий момент у нас <b>184 активные закупки</b>, присоединяйтесь!
+		.purchase
+			.purchase-list
+				.purchase-list__item.js-drop
+					.purchase-list__item-heading
+						.purchase-list__handler.js-drop-handler
+						.purchase-list__title-wrap
+							span.purchase-list__title(data-count="2") Открыта
+								| (
+								i.purchase-list__count 2
+								| )
+							.badge.badge-pill.badge-info Ожидает оплату
+					.purchase-list__item-content.js-drop-content
+						.purchase-item
+							.purchase-item__list
+								.purchase-item__list-row
+									.purchase-item__list-title
+										.purchase-item__list-label Закупка:
+										.purchase-item__list-name "Пуфикофф"
+								.purchase-item__list-row
+									.purchase-item__list-title
+										.purchase-item__list-label Организатор:
+										a.purchase-item__list-name(href="#") Танюша Федорцова
+								.purchase-item__list-row
+									.purchase-item__map-list
+										.purchase-item__map-list-label Пункт выдачи заказа:
+										.purchase-item__map-list-handler.is-danger.js-show-modal(data-target="#popup-map" data-popup="map-wrap") Не выбрано
+										.purchase-item__map-list-handler.is-warning Карта
+							.purchase-item__product-list.js-drop
+								.purchase-item__product-list-handler.js-drop-handler Посмотреть состав заказа
+									i.ti-angle-down
+								.purchase-item__product-list-content.js-drop-content
+									.purchase-product-list.purchase-product-list_header
+										.purchase-product-list__item.purchase-product-list__item_image Фото
+										.purchase-product-list__item.purchase-product-list__item_text Название
+										.purchase-product-list__item.purchase-product-list__item_count Кол-во
+									.purchase-product-list
+										.purchase-product-list__item.purchase-product-list__item_image
+											img.purchase-product-list__img(src="content/images/product/gag.jpg")
+										.purchase-product-list__item.purchase-product-list__item_text
+											.purchase-product-list__content Игрушка антистресс "Balle"
+										.purchase-product-list__item.purchase-product-list__item_count 1
+									.purchase-product-list
+										.purchase-product-list__item.purchase-product-list__item_image
+											img.purchase-product-list__img(src="content/images/product/chicken.jpg")
+										.purchase-product-list__item.purchase-product-list__item_text
+											.purchase-product-list__content Игрушка розыгрыш "Блюющий желток"
+										.purchase-product-list__item.purchase-product-list__item_count 1
+					.purchase-list__item-footer
+						.purchase-item__list-row
+							.purchase-item__list-title
+								.purchase-item__list-label Сумма:
+								.purchase-item__list-name 1500 руб.
+						.btn-group
+							.btn.btn-sm.btn-success
+								i.ti-share
+								span Подтвердить оплату
+				.purchase-list__item.js-drop
+					.purchase-list__item-heading
+						.purchase-list__handler.js-drop-handler
+						.purchase-list__title-wrap
+							span.purchase-list__title(data-count="1") Выдача
+								| (
+								i.purchase-list__count 1
+								| )
+							.badge.badge-pill.badge-success Оплачено
+					.purchase-list__item-content.js-drop-content
+						.purchase-item
+							.purchase-item__list
+								.purchase-item__list-row
+									.purchase-item__list-title
+										.purchase-item__list-label Закупка:
+										.purchase-item__list-name "Smart Baby Watch"
+								.purchase-item__list-row
+									.purchase-item__list-title
+										.purchase-item__list-label Организатор:
+										a.purchase-item__list-name(href="#") Екатерина Игнаткова
+								.purchase-item__list-row
+									.purchase-item__map-list
+										.purchase-item__map-list-label Пункт выдачи заказа:
+										.purchase-item__map-list-handler.is-info.js-show-modal(data-target="#popup-map" data-popup="map-wrap") Изменить
+										.purchase-item__map-list-handler.is-warning Карта
+									.purchase-item__map-list
+										.purchase-item__map-list-title.js-map-title "Офис Бежицкий район"
+									.purchase-item__map-list
+										.purchase-item__map-list-label Время работы:
+										.purchase-item__map-list-text.js-map-time
+											span среда 17.00-18.00, 
+											span суббота 13.30-14.30
+									.purchase-item__map-list
+										.purchase-item__map-list-label Адрес:
+										.purchase-item__map-list-text.js-map-address ул. 3 Интернационала, д.1
+							.purchase-item__heading
+							.purchase-item__product-list.js-drop
+								.purchase-item__product-list-handler.js-drop-handler Посмотреть состав заказа
+									i.ti-angle-down
+								.purchase-item__product-list-content.js-drop-content
+									.purchase-product-list.purchase-product-list_header
+										.purchase-product-list__item.purchase-product-list__item_image Фото
+										.purchase-product-list__item.purchase-product-list__item_text Название
+										.purchase-product-list__item.purchase-product-list__item_count Кол-во
+									.purchase-product-list
+										.purchase-product-list__item.purchase-product-list__item_image
+											img.purchase-product-list__img(src="content/images/product/gag.jpg")
+										.purchase-product-list__item.purchase-product-list__item_text
+											.purchase-product-list__content Игрушка антистресс "Balle"
+										.purchase-product-list__item.purchase-product-list__item_count 1
+									.purchase-product-list
+										.purchase-product-list__item.purchase-product-list__item_image
+											img.purchase-product-list__img(src="content/images/product/chicken.jpg")
+										.purchase-product-list__item.purchase-product-list__item_text
+											.purchase-product-list__content Игрушка розыгрыш "Блюющий желток"
+										.purchase-product-list__item.purchase-product-list__item_count 1
+					.purchase-list__item-footer
+						.purchase-item__list-row
+							.purchase-item__list-title
+								.purchase-item__list-label Сумма:
+								.purchase-item__list-name 7200 руб.
+						.btn-group
+							.btn.btn-sm.btn-danger
+								i.ti-share-alt
+								span Отменить оплату
