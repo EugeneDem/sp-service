@@ -27,23 +27,29 @@ var Main = function() {
     };
 
     var modalOpen = function() {
+        var idModal;
+        
         $(document).on('click', '.js-show-modal', function(e) {
             var $this = $(e.currentTarget);
-            var idModal = $this.data('target');
             var idMap = $this.data('popup');
+            var statusCard = $this.data('point');
             var currentCard;
+
+            idModal = $this.data('target');
             $(idModal).modal();
             if(idMap !== '' && window.dataMap != undefined) {
                 currentCard = $this.parents('.purchase-list__item');
-                window.popupMap.init(idMap, dataMap, currentCard);
+                window.popupMap.init(idMap, dataMap, currentCard, statusCard);
             }
         });
 
-        $(document).on('click', '.modal .close', function() {
-            if ($('.map-wrap').is(':visible')) {
-                if (window.popupMap.eMap){
-                    window.popupMap.eMap.destroy();
-                }
+        $('.modal').on('hidden.bs.modal', function() {
+            if ($('.map-wrap').length && window.popupMap.eMap) {
+                window.popupMap.eMap.destroy();
+                window.popupMap.eData = [];
+                window.popupMap.ePlacemarkArray = [];
+                $(idModal).find('.map-wrap__nav-scrollbar').perfectScrollbar('destroy');
+                $(idModal).find('.map-wrap__nav-list').empty().remove();
             }
         });
     };
@@ -77,7 +83,7 @@ var Main = function() {
             });
         },
         
-        clickSalonList: function(){
+        clickMapList: function(){
             $('.map-wrap__nav-list').on('click', '.map-wrap__nav-list-item', function(){
                 var id = $(this).attr('data-id');
                 var placemark = window.popupMap.ePlacemarkArray[id-1];
@@ -94,24 +100,26 @@ var Main = function() {
         },
         
         map: {
-            openForm: function(id, selector){
-                var idMap = '#' + id;
+            openForm: function(map, selector, status){
+                var idMap = '#' + map;
+                var statusLink = status;
                 var tpl = '';
-                var series = window.popupMap.eData[id-1];
+                var id = '';
+                var series = '';
+                var parentEl;
 
-                $(document).on('click', '.js-add-address', function(){
-                    var id = $(this).attr('data-id');
+                $(document).on('click', '.js-add-address', function() {
+                    id = $(this).attr('data-id');
+                    series = window.popupMap.eData[id-1];
 
-                    if ($(this).hasClass('is-info')) {
-                        console.log('info');
+                    if (statusLink == 'edit') {
                         $('.js-map-title', selector).html(series['title']);
                         $('.js-map-address', selector).html(series['city'] + ', ' + series['address']);
                         $('.js-map-time', selector).html(series['time']);
                     }
 
-                    if ($(this).hasClass('is-danger')) {
-                        console.log('danger');
-                        
+                    if (statusLink == 'add') {
+
                         if (series['title'] != '') {
                             tpl += '<div class="purchase-item__map-list">'+
                             '<div class="purchase-item__map-list-title js-map-title">"' + series['title'] + '"</div>'+
@@ -121,17 +129,18 @@ var Main = function() {
                         if (series['time'] != '') {
                             tpl += '<div class="purchase-item__map-list">'+
                             '<div class="purchase-item__map-list-label">Время работы:</div>'+
-                            '<div class="purchase-item__map-list-title js-map-time">' + series['time'] + '</div>'+
+                            '<div class="purchase-item__map-list-text js-map-time">' + series['time'] + '</div>'+
                             '</div>';
                         }
 
                         if (series['address'] != '') {
                             tpl += '<div class="purchase-item__map-list">'+
                             '<div class="purchase-item__map-list-label">Адрес:</div>'+
-                            '<div class="purchase-item__map-list-title js-map-address">' + series['address'] + '</div>'+
+                            '<div class="purchase-item__map-list-text js-map-address">' + series['address'] + '</div>'+
                             '</div>';
                         }
-                        $(this).parent().insertAfter(tpl);
+
+                        $(tpl).insertAfter($(selector).find('.js-show-modal').attr('data-point', 'edit').removeClass('is-danger').addClass('is-info').empty().text('Изменить').parent());
                     }
 
                     $(idMap).parents('.modal').find('.close').trigger('click');
@@ -166,6 +175,7 @@ var Main = function() {
                         
                         if (point["coordinates"]) {
                             var placemark = new ymaps.Placemark(point["coordinates"], {
+                                id: point["id"],
                                 city: point["city"],
                                 address: point["address"],
                                 coordinates: point["coordinates"],
@@ -198,28 +208,15 @@ var Main = function() {
                 clusterer.add(window.popupMap.ePlacemarkArray);
                 window.popupMap.eMap.geoObjects.add(clusterer);
             },
-            redrowAddresslist: function(){
-                if($('.offices-map__content').length){
-                    $('.offices-map__content > div').width($(window).width());
-                }
-    
-                if($('.js-offices-filter-modal').is(':visible')){
-                    $('.js-offices-filter-address').removeClass('is-active');
-                    $('.js-offices-filter-services').addClass('is-active');
-                    $('.js-offices-filter-modal').removeAttr('style');
-                    $('.offices-map__modal-overlay').fadeOut(function(){
-                        this.remove();
-                        $('body').removeClass('offices-map__modal-open');
-                    });
-                }
-            },
-            init: function(id, selector){
+
+            init: function(id, selector, status){
                 window.popupMap.eMap = new ymaps.Map(id, {
                     center: [55.76, 37.64],
                     zoom: 10,
                     controls: [],
                     clusterize: true
                 });
+
                 window.popupMap.eMap.controls.add('zoomControl', {
                     position: {
                         top: 75,
@@ -227,14 +224,10 @@ var Main = function() {
                         right: 15
                     }
                 });
+
                 window.popupMap.eMap.behaviors.disable('scrollZoom');
-    
-                $(window).on('resize', function(){
-                    window.popupMap.map.redrowAddresslist();
-                });
-    
                 window.popupMap.map.addPlacemarks();
-                window.popupMap.map.openForm(id, selector);
+                window.popupMap.map.openForm(id, selector, status);
             }
         },
         changeSalon: function(){
@@ -249,14 +242,14 @@ var Main = function() {
             });
         },
         
-        init: function(id, data, selector){
+        init: function(id, data, selector, status){
             window.popupMap.eData = data;
             ymaps.load(function(){
-                window.popupMap.map.init(id, selector);
+                window.popupMap.map.init(id, selector, status);
             });
 
             window.popupMap.buildAddressList();
-            window.popupMap.clickSalonList();
+            window.popupMap.clickMapList();
             window.popupMap.changeSalon();
         }
     }
