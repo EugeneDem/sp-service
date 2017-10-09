@@ -40,6 +40,10 @@ $link-color: #000;
     border-bottom: 1px solid #c8c7cc;
 
     > li {
+        &:focus {
+            outline: 0 none;
+        }
+
         a {
             color: #8e8e93;
             border-bottom: none;

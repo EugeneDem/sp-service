@@ -1,0 +1,116 @@
+body {
+  background: #F0F3F4;
+}
+
+.navbar .navbar-header {
+  border-right-color: rgba(0, 0, 0, 0.2);
+  border-bottom-color: rgba(0, 0, 0, 0.2);
+  background: #1C2B36;
+}
+
+.navbar .navbar-header .sidebar-toggler,.navbar .navbar-header .sidebar-mobile-toggler {
+  color: #5c798f;
+}
+
+.navbar .navbar-collapse {
+  border-bottom-color: rgba(0, 0, 0, 0.2);
+  background: #fff;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+}
+
+.navbar .navbar-collapse .navbar-nav > li > a {
+  color: #141719;
+}
+
+.navbar .navbar-collapse .navbar-nav > li > a i {
+  color: #3E4B5C;
+}
+
+.navbar .navbar-collapse .navbar-nav .dot-badge {
+  border-color: #fff;
+}
+
+#sidebar {
+  background: #1C2B36;
+}
+
+#sidebar nav {
+  border-right-color: #1C2B36;
+}
+
+#sidebar nav > ul {
+  border-top-color: #141518;
+  border-bottom-color: #141518;
+  background: #16232D;
+}
+
+#sidebar nav > ul > li.open,#sidebar nav > ul > li:hover {
+  background: #0e161c;
+}
+
+#sidebar nav > ul > li.active {
+  background: #131E26;
+}
+
+#sidebar nav > ul > li.active > a .item-media > i {
+  color: #fff;
+}
+
+#sidebar nav > ul > li.active > a .item-inner {
+  color: #fff;
+}
+
+#sidebar nav > ul > li > a .item-media > i {
+  color: #51C6EA;
+}
+
+#sidebar nav > ul > li > a .item-inner {
+  border-bottom-color: #141518;
+  color: #b4bcc8;
+}
+
+#sidebar nav > ul > li > a:active:focus {
+  background: #131E26;
+}
+
+.app > footer {
+  border-top-color: rgba(0, 0, 0, 0.2);
+  background: #1C2B36;
+  color: #fff;
+}
+
+.app > footer a {
+  color: #fff;
+}
+
+.main-content-title {
+  border-bottom-color: #1C2B36;
+}
+
+.address-list__item {
+  border-top: 1px solid #1C2B36;
+  border-bottom: 1px solid #1C2B36;
+  background-color: #fff;
+}
+
+.address-list__item:nth-of-type(n-1) {
+  border-right: 1px solid #1C2B36;
+}
+
+@media (min-width: 992px) {
+  .address-list__item:nth-child(3n-2) {
+    border-left: 1px solid #1C2B36;
+  }
+}
+
+@media (max-width: 991px) {
+  .address-list__item:nth-child(2n-1) {
+    border-left: 1px solid #1C2B36;
+  }
+}
+
+@media (max-width: 576px) {
+  .address-list__item:nth-child(2n) {
+    border-left: 1px solid #1C2B36;
+  }
+}

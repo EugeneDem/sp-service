@@ -31,11 +31,11 @@ var Main = function() {
         
         $(document).on('click', '.js-show-modal', function(e) {
             var $this = $(e.currentTarget);
-            var idMap = $this.data('popup');
-            var statusCard = $this.data('point');
+            var idMap = $this.attr('data-popup');
+            var statusCard = $this.attr('data-point');
             var currentCard;
 
-            idModal = $this.data('target');
+            idModal = $this.attr('data-target');
             $(idModal).modal();
             if(idMap !== '' && window.dataMap != undefined) {
                 currentCard = $this.parents('.purchase-list__item');
@@ -45,11 +45,7 @@ var Main = function() {
 
         $('.modal').on('hidden.bs.modal', function() {
             if ($('.map-wrap').length && window.popupMap.eMap) {
-                window.popupMap.eMap.destroy();
-                window.popupMap.eData = [];
-                window.popupMap.ePlacemarkArray = [];
-                $(idModal).find('.map-wrap__nav-scrollbar').perfectScrollbar('destroy');
-                $(idModal).find('.map-wrap__nav-list').empty().remove();
+                window.popupMap.destroy(idModal);
             }
         });
     };
@@ -57,8 +53,10 @@ var Main = function() {
     window.popupMap = {
         eData: [],
         eMap: null,
+        clusterer: null,
         ePlacemarkArray: [],
         apiScroll: [],
+        tpl: '',
         buildAddressList: function(){
             var html = "";
     
@@ -82,6 +80,15 @@ var Main = function() {
                 $(this).perfectScrollbar('update');
             });
         },
+
+        destroy: function(id) {
+            window.popupMap.eMap.destroy();
+            window.popupMap.clusterer.removeAll();
+            window.popupMap.eData = [];
+            window.popupMap.ePlacemarkArray = [];
+            $(id).find('.map-wrap__nav-scrollbar').perfectScrollbar('destroy');
+            $(id).find('.map-wrap__nav-list').empty().remove();
+        },
         
         clickMapList: function(){
             $('.map-wrap__nav-list').on('click', '.map-wrap__nav-list-item', function(){
@@ -100,51 +107,51 @@ var Main = function() {
         },
         
         map: {
-            openForm: function(map, selector, status){
-                var idMap = '#' + map;
-                var statusLink = status;
+            id: null,
+            selector: null,
+            status: null,
+            openForm: function(){
+                var idMap = '#' + window.popupMap.map.id;
+                var statusLink = window.popupMap.map.status;
                 var tpl = '';
                 var id = '';
                 var series = '';
-                var parentEl;
 
-                $(document).on('click', '.js-add-address', function() {
-                    id = $(this).attr('data-id');
-                    series = window.popupMap.eData[id-1];
+                id = $(this).attr('data-id');
+                series = window.popupMap.eData[id-1];
 
-                    if (statusLink == 'edit') {
-                        $('.js-map-title', selector).html(series['title']);
-                        $('.js-map-address', selector).html(series['city'] + ', ' + series['address']);
-                        $('.js-map-time', selector).html(series['time']);
+                if (statusLink == 'edit') {
+                    $('.js-map-title', window.popupMap.map.selector).html(series['title']);
+                    $('.js-map-address', window.popupMap.map.selector).html(series['city'] + ', ' + series['address']);
+                    $('.js-map-time', window.popupMap.map.selector).html(series['time']);
+                }
+
+                if (statusLink == 'add') {
+                    if (series['title'] != '') {
+                        tpl += '<div class="purchase-item__map-list">'+
+                        '<div class="purchase-item__map-list-title js-map-title">"' + series['title'] + '"</div>'+
+                        '</div>';
                     }
 
-                    if (statusLink == 'add') {
-
-                        if (series['title'] != '') {
-                            tpl += '<div class="purchase-item__map-list">'+
-                            '<div class="purchase-item__map-list-title js-map-title">"' + series['title'] + '"</div>'+
-                            '</div>';
-                        }
-
-                        if (series['time'] != '') {
-                            tpl += '<div class="purchase-item__map-list">'+
-                            '<div class="purchase-item__map-list-label">Время работы:</div>'+
-                            '<div class="purchase-item__map-list-text js-map-time">' + series['time'] + '</div>'+
-                            '</div>';
-                        }
-
-                        if (series['address'] != '') {
-                            tpl += '<div class="purchase-item__map-list">'+
-                            '<div class="purchase-item__map-list-label">Адрес:</div>'+
-                            '<div class="purchase-item__map-list-text js-map-address">' + series['address'] + '</div>'+
-                            '</div>';
-                        }
-
-                        $(tpl).insertAfter($(selector).find('.js-show-modal').attr('data-point', 'edit').removeClass('is-danger').addClass('is-info').empty().text('Изменить').parent());
+                    if (series['time'] != '') {
+                        tpl += '<div class="purchase-item__map-list">'+
+                        '<div class="purchase-item__map-list-label">Время работы:</div>'+
+                        '<div class="purchase-item__map-list-text js-map-time">' + series['time'] + '</div>'+
+                        '</div>';
                     }
 
-                    $(idMap).parents('.modal').find('.close').trigger('click');
-                });
+                    if (series['address'] != '') {
+                        tpl += '<div class="purchase-item__map-list">'+
+                        '<div class="purchase-item__map-list-label">Адрес:</div>'+
+                        '<div class="purchase-item__map-list-text js-map-address">' + series['address'] + '</div>'+
+                        '</div>';
+                    }
+
+                    $(tpl).insertAfter($(window.popupMap.map.selector).find('.js-show-modal').attr('data-point', 'edit').removeClass('is-danger').addClass('is-info').empty().text('Изменить').parent());
+                    
+                }
+
+                $(idMap).parents('.modal').find('.close').trigger('click');
             },
             addPlacemarks: function(){
                 var MyBalloonContentLayoutClass = ymaps.templateLayoutFactory.createClass(
@@ -199,17 +206,17 @@ var Main = function() {
                     }
                 }
     
-                var clusterer = new ymaps.Clusterer({
+                window.popupMap.clusterer = new ymaps.Clusterer({
                     // clusterDisableClickZoom: true,
                     openBalloonOnClick: false,
                     clusterIcons: clusterIcons,
                     clusterIconContentLayout: MyIconContentLayout
                 });
-                clusterer.add(window.popupMap.ePlacemarkArray);
-                window.popupMap.eMap.geoObjects.add(clusterer);
+                window.popupMap.clusterer.add(window.popupMap.ePlacemarkArray);
+                window.popupMap.eMap.geoObjects.add(window.popupMap.clusterer);
             },
 
-            init: function(id, selector, status){
+            init: function(id){
                 window.popupMap.eMap = new ymaps.Map(id, {
                     center: [55.76, 37.64],
                     zoom: 10,
@@ -227,7 +234,6 @@ var Main = function() {
 
                 window.popupMap.eMap.behaviors.disable('scrollZoom');
                 window.popupMap.map.addPlacemarks();
-                window.popupMap.map.openForm(id, selector, status);
             }
         },
         changeSalon: function(){
@@ -244,13 +250,18 @@ var Main = function() {
         
         init: function(id, data, selector, status){
             window.popupMap.eData = data;
+            window.popupMap.map.id = id;
+            window.popupMap.map.selector = selector;
+            window.popupMap.map.status = status;
+
             ymaps.load(function(){
-                window.popupMap.map.init(id, selector, status);
+                window.popupMap.map.init(id);
             });
 
             window.popupMap.buildAddressList();
             window.popupMap.clickMapList();
             window.popupMap.changeSalon();
+            $(document).on('click', '.js-add-address', window.popupMap.map.openForm);
         }
     }
     
