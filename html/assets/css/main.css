@@ -300,10 +300,7 @@ ul.sub-menu li ul.sub-menu li ul.sub-menu li a {
 }
 
 .navbar-title {
-  padding-top: 20px !important;
-  padding-right: 15px !important;
-  padding-bottom: 5px !important;
-  padding-left: 15px !important;
+  padding: 20px 15px 5px;
   color: #808285;
   text-transform: uppercase;
   letter-spacing: 0.2px;
@@ -438,6 +435,11 @@ ul.sub-menu li ul.sub-menu li ul.sub-menu li a {
 .navbar .navbar-header a {
   height: 65px;
   line-height: 65px;
+}
+
+.navbar .navbar-header a:focus {
+  outline: 0;
+  text-decoration: none;
 }
 
 .navbar .navbar-header .navbar-brand {
@@ -1649,7 +1651,7 @@ ul.sub-menu li ul.sub-menu li ul.sub-menu li a {
 
   .navbar .navbar-header {
     float: left;
-    width: 340px;
+    width: 260px;
     border-right: 1px solid #c8c7cc;
   }
 
@@ -1927,6 +1929,11 @@ ul.sub-menu li ul.sub-menu li ul.sub-menu li a {
     transform: translate3d(-260px, 0, 0);
   }
 
+  .navbar-title {
+    padding-top: 30px;
+    padding-bottom: 10px;
+  }
+
   .sidebar {
     position: fixed !important;
     top: 0;
@@ -2064,6 +2071,10 @@ ul.sub-menu li ul.sub-menu li ul.sub-menu li a {
     line-height: 60px;
     line-height: 39px;
     transition: opacity 0.3s ease;
+  }
+
+  .navbar .navbar-nav > li.current-user a:after {
+    display: none;
   }
 
   .navbar .navbar-nav > li.current-user.open i,.navbar .navbar-nav > li.current-user a:hover i {

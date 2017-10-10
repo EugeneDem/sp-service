@@ -12,8 +12,18 @@ body {
         border-bottom-color: rgba(0, 0, 0, 0.2);
 
         .sidebar-toggler,
-        .sidebar-mobile-toggler {
+        .sidebar-mobile-toggler,
+        .sidebar-toggler:hover,
+        .sidebar-mobile-toggler:hover {
             color: #5c798f;
+        }
+
+        .menu-toggler {
+            color: #5c798f;
+
+            &:focus {
+                text-decoration: none;
+            }
         }
     }
 
@@ -22,17 +32,65 @@ body {
         border-bottom-color: rgba(0, 0, 0, 0.2);
         box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
 
-        .navbar-nav {
-            > li > a {
-                color: #141719;
+        @media (max-width: $screen-sm-max) {
+            background-color: #1C2B36;
+        }
 
-                i {
-                    color: #3E4B5C;
+        .navbar-nav {
+            > li {
+
+                @media (max-width: $screen-xs-max) {
+                    border-bottom-color: #2C2F3B;
+                }
+
+                > a {
+                    color: #141719;
+
+                    @media (max-width: $screen-sm-max) {
+                        color: #fff;
+                    }
+
+                    &:hover, &:focus, &:active {
+                        @media (max-width: $screen-sm-max) {
+                            background-color: #0e161b;
+                        }
+                    }
+
+                    i {
+                        color: #3E4B5C;
+
+                        @media (max-width: $screen-sm-max) {
+                            color: #5c798f;
+                        }
+                    }
+                }
+
+                &.show > a {
+                    @media (max-width: $screen-sm-max) {
+                        background-color: #0e161b;
+                    }
                 }
             }
 
             .dot-badge {
                 border-color: #fff;
+
+                @media (max-width: $screen-sm-max) {
+                    border-color: #1C2B36;
+                }
+            }
+        }
+
+        .close-handle {
+            @media (max-width: $screen-xs-max) {
+                background-color: #1C2B36;
+            }
+
+            .arrow-left,
+            .arrow-right {
+                @media (max-width: $screen-xs-max) {
+                    background-color: #5c798f;
+                }
             }
         }
     }

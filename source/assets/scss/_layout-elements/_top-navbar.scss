@@ -30,7 +30,7 @@
         }
 
         @media (min-width: $screen-md-min) {
-            width: 340px;
+            width: 260px;
             float: left;
             border-right: 1px solid #c8c7cc;
         }
@@ -38,6 +38,11 @@
         a {
             line-height: 65px;
             height: 65px;
+
+            &:focus {
+                outline: 0;
+                text-decoration: none;
+            }
         }
 
         .navbar-brand {
@@ -429,6 +434,10 @@
                             margin: 10px auto;
                             width: 39px;
                             border-radius: 20%;
+                        }
+
+                        &:after {
+                            display: none;
                         }
                     }
 

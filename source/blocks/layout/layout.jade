@@ -31,13 +31,13 @@ html(lang='ru')
 						a.sidebar-mobile-toggler.hidden-lg-up(data-toggle-class="app-slide-off" data-toggle-target="#app" data-toggle-click-outside="#sidebar" href="#")
 							i.ti-align-justify
 						a.navbar-brand(href="#")
-							img(src="content/images/logo-sps.png" alt="СП Сервис")
-						a#menu-toggler.pull-right.menu-toggler.hidden-md-up(data-toggle="collapse" href=".navbar-collapse")
+							img(src="assets/images/brand.svg" alt="СП Сервис")
+						a#menu-toggler.pull-right.menu-toggler.hidden-md-up(data-toggle="collapse" href="#navbar-collapse")
 							span.sr-only Toggle navigation
 							i.ti-view-grid
 					// end navbar header
 					// navbar collapse
-					.navbar-collapse.collapse
+					#navbar-collapse.navbar-collapse.collapse
 						ul.nav.navbar-nav.ml-auto
 							// start: MESSAGES DROPDOWN
 							li.nav-item.dropdown
@@ -98,7 +98,7 @@ html(lang='ru')
 										a(href="login_signin.html") Log Out
 							// end: USER OPTIONS DROPDOWN
 						// start: MENU TOGGLER FOR MOBILE DEVICES
-						.close-handle.menu-toggler.hidden-md-up(data-toggle="collapse" href=".navbar-collapse")
+						.close-handle.menu-toggler.hidden-md-up(data-toggle="collapse" href="#navbar-collapse")
 							.arrow-left
 							.arrow-right
 						// end: MENU TOGGLER FOR MOBILE DEVICES

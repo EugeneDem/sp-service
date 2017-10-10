@@ -1,6 +1,14 @@
 'use strict';
 var Main = function() {
-    var pScroll;
+    var $html = $('html'), $win = $(window), wrap = $('.app-aside'), app = $('#app'), MEDIAQUERY = {}, pScroll;
+
+    MEDIAQUERY = {
+		desktopXL: 1200,
+		desktop: 992,
+		tablet: 768,
+		mobile: 576,
+		phone: 480
+	};
     
     var spoller = {
         init: function(){
@@ -10,6 +18,88 @@ var Main = function() {
                 });
             });
         }
+    };
+
+    var toggleClassOnElement = function() {
+		var toggleAttribute = $('*[data-toggle-class]');
+		toggleAttribute.each(function() {
+			var _this = $(this);
+			var toggleClass = _this.attr('data-toggle-class');
+			var outsideElement;
+			var toggleElement;
+			typeof _this.attr('data-toggle-target') !== 'undefined' ? toggleElement = $(_this.attr('data-toggle-target')) : toggleElement = _this;
+			_this.on("click", function(e) {
+				if(_this.attr('data-toggle-type') !== 'undefined' && _this.attr('data-toggle-type') == "on") {
+					toggleElement.addClass(toggleClass);
+				} else if(_this.attr('data-toggle-type') !== 'undefined' && _this.attr('data-toggle-type') == "off") {
+					toggleElement.removeClass(toggleClass);
+				} else {
+					toggleElement.toggleClass(toggleClass);
+				}
+				e.preventDefault();
+				if(_this.attr('data-toggle-click-outside')) {
+
+					outsideElement = $(_this.attr('data-toggle-click-outside'));
+					$(document).on("mousedown touchstart", toggleOutside);
+
+				};
+
+			});
+
+			var toggleOutside = function(e) {
+				if(outsideElement.has(e.target).length === 0//checks if descendants of $box was clicked
+				&& !outsideElement.is(e.target)//checks if the $box itself was clicked
+				&& !toggleAttribute.is(e.target) && toggleElement.hasClass(toggleClass)) {
+
+					toggleElement.removeClass(toggleClass);
+					$(document).off("mousedown touchstart", toggleOutside);
+				}
+			};
+
+		});
+    };
+    
+    var navbarHandler = function() {
+		var navbar = $('.navbar-collapse > .nav');
+		var pageHeight = $win.innerHeight() - $('header').outerHeight();
+		var collapseButton = $('#menu-toggler');
+		if(isSmallDevice()) {
+			navbar.css({
+				height: pageHeight
+			});
+		} else {
+			navbar.css({
+				height: 'auto'
+			});
+		};
+		$(document).on("mousedown touchstart", toggleNavbar);
+		function toggleNavbar(e) {
+			if(navbar.has(e.target).length === 0//checks if descendants of $box was clicked
+			&& !navbar.is(e.target)//checks if the $box itself was clicked
+			&& navbar.parent().hasClass("collapse in"))  {
+				collapseButton.trigger("click");
+				//$(document).off("mousedown touchstart", toggleNavbar);
+			}
+		};
+    };
+    
+    var resizeHandler = function(func, threshold, execAsap) {
+		$(window).resize(function() {
+			navbarHandler();
+		});
+    };
+    
+    function isSmallDevice() {
+		return $win.width() < MEDIAQUERY.desktop;
+    }
+    
+    var goTopHandler = function(e) {
+        $('.go-top').on('click', function(e) {
+            $("html, body").animate({
+                scrollTop: 0
+            }, "slow");
+            e.preventDefault();
+        });
     };
     
 
@@ -276,6 +366,10 @@ var Main = function() {
     return {
         init: function() {
             spoller.init();
+            toggleClassOnElement();
+            navbarHandler();
+            resizeHandler();
+            goTopHandler();
             perfectScrollbarHandler();
             modalOpen();
         }
