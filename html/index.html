@@ -135,63 +135,114 @@
                       </div>
                     </div>
                     <div class="purchase-list__item-content js-drop-content">
-                      <div class="purchase-item">
-                        <div class="purchase-item__list">
-                          <div class="purchase-item__list-row">
+                      <!-- start: purchase-item-1-->
+                      <div class="purchase-item js-drop">
+                        <div class="purchase-item__header">
+                          <div class="purchase-item__header-item purchase-item__header-item_left js-drop-handler">
+                            <div class="ti-plus purchase-item__icon-handler"></div>
                             <div class="purchase-item__list-title">
                               <div class="purchase-item__list-label">Закупка:</div>
                               <div class="purchase-item__list-name">"Пуфикофф"</div>
                             </div>
                           </div>
-                          <div class="purchase-item__list-row">
+                          <div class="purchase-item__header-item purchase-item__header-item_right">
+                            <div class="purchase-item__price">1500 руб.</div>
+                            <div class="btn-group"><a href="#" class="btn btn-sm btn-success"><i class="ti-share"></i><span>Подтвердить оплату</span></a></div>
+                          </div>
+                        </div>
+                        <div class="purchase-item__content js-drop-content">
+                          <div class="purchase-item__list">
+                            <div class="purchase-item__list-row">
+                              <div class="purchase-item__list-title">
+                                <div class="purchase-item__list-label">Организатор:</div><a href="#" class="purchase-item__list-name">Танюша Федорцова</a>
+                              </div>
+                            </div>
+                            <div class="purchase-item__list-row">
+                              <div class="purchase-item__map-list">
+                                <div class="purchase-item__map-list-label">Пункт выдачи заказа:</div>
+                                <div id="card-id-1-1" data-target="#popup-map" data-popup="map-wrap" data-point="add" class="purchase-item__map-list-handler is-danger js-show-modal">Не выбрано</div>
+                                <div class="purchase-item__map-list-handler is-warning">Карта</div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="purchase-item__product-list js-drop">
+                            <div class="purchase-item__product-list-handler js-drop-handler">Посмотреть состав заказа<i class="ti-angle-down"></i></div>
+                            <div class="purchase-item__product-list-content js-drop-content">
+                              <div class="purchase-product-list">
+                                <div class="purchase-product-list__item purchase-product-list__item_image"><img src="content/images/product/chicken.jpg" class="purchase-product-list__img"></div>
+                                <div class="purchase-product-list__item purchase-product-list__item_text">
+                                  <div class="purchase-product-list__content"><a href="#">Игрушка антистресс "Balle"</a></div>
+                                </div>
+                                <div class="purchase-product-list__item purchase-product-list__item_price"><span class="hidden-sm-up">Цена:&nbsp;</span>950 руб.</div>
+                                <div class="purchase-product-list__item purchase-product-list__item_count"><span class="hidden-sm-up">Кол-во:&nbsp;</span>1</div>
+                              </div>
+                              <div class="purchase-product-list">
+                                <div class="purchase-product-list__item purchase-product-list__item_image"><img src="content/images/product/gag.jpg" class="purchase-product-list__img"></div>
+                                <div class="purchase-product-list__item purchase-product-list__item_text">
+                                  <div class="purchase-product-list__content"><a href="#">Игрушка розыгрыш "Блюющий желток"</a></div>
+                                </div>
+                                <div class="purchase-product-list__item purchase-product-list__item_price"><span class="hidden-sm-up">Цена:&nbsp;</span>650 руб.</div>
+                                <div class="purchase-product-list__item purchase-product-list__item_count"><span class="hidden-sm-up">Кол-во:&nbsp;</span>1</div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- end: purchase-item-1-->
+                      <!-- start: purchase-item-2-->
+                      <div class="purchase-item js-drop">
+                        <div class="purchase-item__header">
+                          <div class="purchase-item__header-item purchase-item__header-item_left js-drop-handler">
+                            <div class="ti-plus purchase-item__icon-handler"></div>
                             <div class="purchase-item__list-title">
-                              <div class="purchase-item__list-label">Организатор:</div><a href="#" class="purchase-item__list-name">Танюша Федорцова</a>
+                              <div class="purchase-item__list-label">Закупка:</div>
+                              <div class="purchase-item__list-name">"Пуфикофф"</div>
                             </div>
                           </div>
-                          <div class="purchase-item__list-row">
-                            <div class="purchase-item__map-list">
-                              <div class="purchase-item__map-list-label">Пункт выдачи заказа:</div>
-                              <div id="card-id-1" data-target="#popup-map" data-popup="map-wrap" data-point="add" class="purchase-item__map-list-handler is-danger js-show-modal">Не выбрано</div>
-                              <div class="purchase-item__map-list-handler is-warning">Карта</div>
-                            </div>
+                          <div class="purchase-item__header-item purchase-item__header-item_right">
+                            <div class="purchase-item__price">1500 руб.</div>
+                            <div class="btn-group"><a href="#" class="btn btn-sm btn-success"><i class="ti-share"></i><span>Подтвердить оплату</span></a></div>
                           </div>
                         </div>
-                        <div class="purchase-item__product-list js-drop">
-                          <div class="purchase-item__product-list-handler js-drop-handler">Посмотреть состав заказа<i class="ti-angle-down"></i></div>
-                          <div class="purchase-item__product-list-content js-drop-content">
-                            <div class="purchase-product-list purchase-product-list_header">
-                              <div class="purchase-product-list__item purchase-product-list__item_image">Фото</div>
-                              <div class="purchase-product-list__item purchase-product-list__item_text">Название</div>
-                              <div class="purchase-product-list__item purchase-product-list__item_count">Кол-во</div>
-                            </div>
-                            <div class="purchase-product-list">
-                              <div class="purchase-product-list__item purchase-product-list__item_image"><img src="content/images/product/gag.jpg" class="purchase-product-list__img"></div>
-                              <div class="purchase-product-list__item purchase-product-list__item_text">
-                                <div class="purchase-product-list__content">Игрушка антистресс "Balle"</div>
+                        <div class="purchase-item__content js-drop-content">
+                          <div class="purchase-item__list">
+                            <div class="purchase-item__list-row">
+                              <div class="purchase-item__list-title">
+                                <div class="purchase-item__list-label">Организатор:</div><a href="#" class="purchase-item__list-name">Танюша Федорцова</a>
                               </div>
-                              <div class="purchase-product-list__item purchase-product-list__item_count">1</div>
                             </div>
-                            <div class="purchase-product-list">
-                              <div class="purchase-product-list__item purchase-product-list__item_image"><img src="content/images/product/chicken.jpg" class="purchase-product-list__img"></div>
-                              <div class="purchase-product-list__item purchase-product-list__item_text">
-                                <div class="purchase-product-list__content">Игрушка розыгрыш "Блюющий желток"</div>
+                            <div class="purchase-item__list-row">
+                              <div class="purchase-item__map-list">
+                                <div class="purchase-item__map-list-label">Пункт выдачи заказа:</div>
+                                <div id="card-id-1-2" data-target="#popup-map" data-popup="map-wrap" data-point="add" class="purchase-item__map-list-handler is-danger js-show-modal">Не выбрано</div>
+                                <div class="purchase-item__map-list-handler is-warning">Карта</div>
                               </div>
-                              <div class="purchase-product-list__item purchase-product-list__item_count">1</div>
+                            </div>
+                          </div>
+                          <div class="purchase-item__product-list js-drop">
+                            <div class="purchase-item__product-list-handler js-drop-handler">Посмотреть состав заказа<i class="ti-angle-down"></i></div>
+                            <div class="purchase-item__product-list-content js-drop-content">
+                              <div class="purchase-product-list">
+                                <div class="purchase-product-list__item purchase-product-list__item_image"><img src="content/images/product/chicken.jpg" class="purchase-product-list__img"></div>
+                                <div class="purchase-product-list__item purchase-product-list__item_text">
+                                  <div class="purchase-product-list__content"><a href="#">Игрушка антистресс "Balle"</a></div>
+                                </div>
+                                <div class="purchase-product-list__item purchase-product-list__item_price"><span class="hidden-sm-up">Цена:&nbsp;</span>950 руб.</div>
+                                <div class="purchase-product-list__item purchase-product-list__item_count"><span class="hidden-sm-up">Кол-во:&nbsp;</span>1</div>
+                              </div>
+                              <div class="purchase-product-list">
+                                <div class="purchase-product-list__item purchase-product-list__item_image"><img src="content/images/product/gag.jpg" class="purchase-product-list__img"></div>
+                                <div class="purchase-product-list__item purchase-product-list__item_text">
+                                  <div class="purchase-product-list__content"><a href="#">Игрушка розыгрыш "Блюющий желток"</a></div>
+                                </div>
+                                <div class="purchase-product-list__item purchase-product-list__item_price"><span class="hidden-sm-up">Цена:&nbsp;</span>650 руб.</div>
+                                <div class="purchase-product-list__item purchase-product-list__item_count"><span class="hidden-sm-up">Кол-во:&nbsp;</span>1</div>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="purchase-list__item-footer">
-                      <div class="purchase-item__list-row">
-                        <div class="purchase-item__list-title">
-                          <div class="purchase-item__list-label">Сумма:</div>
-                          <div class="purchase-item__list-name">1500 руб.</div>
-                        </div>
-                      </div>
-                      <div class="btn-group">
-                        <div class="btn btn-sm btn-success"><i class="ti-share"></i><span>Подтвердить оплату</span></div>
-                      </div>
+                      <!-- end: purchase-item-2-->
                     </div>
                   </div>
                   <div class="purchase-list__item js-drop">
@@ -204,75 +255,54 @@
                       </div>
                     </div>
                     <div class="purchase-list__item-content js-drop-content">
-                      <div class="purchase-item">
-                        <div class="purchase-item__list">
-                          <div class="purchase-item__list-row">
+                      <!-- start: purchase-item-1-->
+                      <div class="purchase-item js-drop">
+                        <div class="purchase-item__header">
+                          <div class="purchase-item__header-item purchase-item__header-item_left js-drop-handler">
+                            <div class="ti-plus purchase-item__icon-handler"></div>
                             <div class="purchase-item__list-title">
                               <div class="purchase-item__list-label">Закупка:</div>
                               <div class="purchase-item__list-name">"Smart Baby Watch"</div>
                             </div>
                           </div>
-                          <div class="purchase-item__list-row">
-                            <div class="purchase-item__list-title">
-                              <div class="purchase-item__list-label">Организатор:</div><a href="#" class="purchase-item__list-name">Екатерина Игнаткова</a>
-                            </div>
-                          </div>
-                          <div class="purchase-item__list-row">
-                            <div class="purchase-item__map-list">
-                              <div class="purchase-item__map-list-label">Пункт выдачи заказа:</div>
-                              <div id="card-id-2" data-target="#popup-map" data-popup="map-wrap" data-point="edit" class="purchase-item__map-list-handler is-info js-show-modal">Изменить</div>
-                              <div class="purchase-item__map-list-handler is-warning">Карта</div>
-                            </div>
-                            <div class="purchase-item__map-list">
-                              <div class="purchase-item__map-list-title js-map-title">"Офис Бежицкий район"</div>
-                            </div>
-                            <div class="purchase-item__map-list">
-                              <div class="purchase-item__map-list-label">Время работы:</div>
-                              <div class="purchase-item__map-list-text js-map-time"><span>среда 17.00-18.00, </span><span>суббота 13.30-14.30</span></div>
-                            </div>
-                            <div class="purchase-item__map-list">
-                              <div class="purchase-item__map-list-label">Адрес:</div>
-                              <div class="purchase-item__map-list-text js-map-address">ул. 3 Интернационала, д.1</div>
+                          <div class="purchase-item__header-item purchase-item__header-item_right">
+                            <div class="purchase-item__price">7200 руб.</div>
+                            <div class="btn-group">
+                              <div class="btn btn-sm btn-danger"><i class="ti-share-alt"></i><span>Отменить оплату</span></div>
                             </div>
                           </div>
                         </div>
-                        <div class="purchase-item__heading"></div>
-                        <div class="purchase-item__product-list js-drop">
-                          <div class="purchase-item__product-list-handler js-drop-handler">Посмотреть состав заказа<i class="ti-angle-down"></i></div>
-                          <div class="purchase-item__product-list-content js-drop-content">
-                            <div class="purchase-product-list purchase-product-list_header">
-                              <div class="purchase-product-list__item purchase-product-list__item_image">Фото</div>
-                              <div class="purchase-product-list__item purchase-product-list__item_text">Название</div>
-                              <div class="purchase-product-list__item purchase-product-list__item_count">Кол-во</div>
-                            </div>
-                            <div class="purchase-product-list">
-                              <div class="purchase-product-list__item purchase-product-list__item_image"><img src="content/images/product/gag.jpg" class="purchase-product-list__img"></div>
-                              <div class="purchase-product-list__item purchase-product-list__item_text">
-                                <div class="purchase-product-list__content">Игрушка антистресс "Balle"</div>
+                        <div class="purchase-item__content js-drop-content">
+                          <div class="purchase-item__list">
+                            <div class="purchase-item__list-row">
+                              <div class="purchase-item__list-title">
+                                <div class="purchase-item__list-label">Организатор:</div><a href="#" class="purchase-item__list-name">Екатерина Игнаткова</a>
                               </div>
-                              <div class="purchase-product-list__item purchase-product-list__item_count">1</div>
                             </div>
-                            <div class="purchase-product-list">
-                              <div class="purchase-product-list__item purchase-product-list__item_image"><img src="content/images/product/chicken.jpg" class="purchase-product-list__img"></div>
-                              <div class="purchase-product-list__item purchase-product-list__item_text">
-                                <div class="purchase-product-list__content">Игрушка розыгрыш "Блюющий желток"</div>
+                            <div class="purchase-item__list-row">
+                              <div class="purchase-item__map-list">
+                                <div class="purchase-item__map-list-label">Пункт выдачи заказа:</div>
+                                <div id="card-id-2-1" data-target="#popup-map" data-popup="map-wrap" data-point="edit" class="purchase-item__map-list-handler is-info js-show-modal">Изменить</div>
+                                <div class="purchase-item__map-list-handler is-warning">Карта</div>
                               </div>
-                              <div class="purchase-product-list__item purchase-product-list__item_count">1</div>
+                            </div>
+                          </div>
+                          <div class="purchase-item__product-list js-drop">
+                            <div class="purchase-item__product-list-handler js-drop-handler">Посмотреть состав заказа<i class="ti-angle-down"></i></div>
+                            <div class="purchase-item__product-list-content js-drop-content">
+                              <div class="purchase-product-list">
+                                <div class="purchase-product-list__item purchase-product-list__item_image"><img src="content/images/product/jacket-women.jpg" class="purchase-product-list__img"></div>
+                                <div class="purchase-product-list__item purchase-product-list__item_text">
+                                  <div class="purchase-product-list__content"><a href="#">Зимняя женская куртка с мехом енота</a></div>
+                                </div>
+                                <div class="purchase-product-list__item purchase-product-list__item_price"> <span class="hidden-sm-up">Цена:&nbsp;</span>7200 руб.</div>
+                                <div class="purchase-product-list__item purchase-product-list__item_count"><span class="hidden-sm-up">Кол-во:&nbsp;</span>1</div>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="purchase-list__item-footer">
-                      <div class="purchase-item__list-row">
-                        <div class="purchase-item__list-title">
-                          <div class="purchase-item__list-label">Сумма:</div>
-                          <div class="purchase-item__list-name">7200 руб.</div>
-                        </div>
-                      </div>
-                      <div class="btn-group">
-                        <div class="btn btn-sm btn-danger"><i class="ti-share-alt"></i><span>Отменить оплату</span></div>
-                      </div>
+                      <!-- end: purchase-item-1-->
                     </div>
                   </div>
                 </div>

@@ -1,7 +1,7 @@
 .purchase-list {
 
     &__item {
-        border: 1px solid #c8c7cc;
+        border: 1px solid #337ab7;
     }
 
     &__item + &__item {
@@ -9,7 +9,8 @@
     }
 
     &__item-heading {
-        background: #f7f7f8;
+        background: #337ab7;
+        color: #fff;
         position: relative;
         padding-right: 40px;
         padding-left: 10px;
@@ -32,39 +33,108 @@
     &__item-footer {
         border-top: 1px solid #c8c7cc;
         padding: 10px;
+    }
 
-        .btn {
-            border-radius: 10rem;
-            padding-left: 0.75rem;
-            padding-right: 0.75rem;
-            font-size: 0.9rem;
+    .btn {
+        border-radius: 10rem;
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+        font-size: 0.9rem;
 
-            i {
-                margin-right: 5px;
-            }
+        i {
+            margin-right: 5px;
         }
     }
 
     &__handler {
-        background: url("drop-arrow.svg#datauri") no-repeat 0 0;
-        width: 20px;
-        height: 12px;
-        display: inline-block;
+        width: 40px;
+        height: 40px;
         position: absolute;
-        top: 14px;
-        right: 10px;
-        transition: transform 0.3s ease 0s, -webkit-transform 0.3s ease 0s;
+        top: 0;
+        right: 0;
         cursor: pointer;
 
-        &.is-opened {
-            transform: rotate(-180deg);
+        &:before {
+            background: url("drop-arrow.svg#datauri") no-repeat 0 0;
+            width: 20px;
+            height: 12px;
+            content: "";
+            display: block;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-top: -6px;
+            margin-left: -10px;
+            transition: transform 0.3s ease 0s, -webkit-transform 0.3s ease 0s;
+
+            .is-opened & {
+                transform: rotate(-180deg);
+            }
         }
     }
 }
 
 .purchase-item {
-    border-top: 1px solid #c8c7cc;
-    padding: 10px;
+    border-top: 1px solid #337ab7;
+
+    &__header {
+        display: flex;
+        flex-flow: row;
+        justify-content: space-between;
+        box-sizing: border-box;
+
+        @media (max-width: $screen-xs-max) {
+            flex-flow: column;
+        }
+    }
+
+    &__header-item_left {
+        position: relative;
+        padding: 10px 10px 10px 34px;
+        flex-wrap: nowrap;
+        flex-basis: 100%;
+        cursor: pointer;
+    }
+
+    &__header-item_right {
+        flex: 0 0 auto;
+        text-align: right;
+        padding: 10px;
+        box-sizing: border-box;
+
+        @media (max-width: $screen-xs-max) {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 0;
+        }
+    }
+
+    &__icon-handler {
+        color: #1C2B36;
+        position: absolute;
+        left: 10px;
+        top: 14px;
+
+        &:before {
+            .js-drop-handler.is-opened & {
+                content: "\e622";
+            }
+        }
+    }
+
+    &__content {
+        border-top: 1px solid #c8c7cc;
+        padding: 10px 10px 10px 24px;
+        margin-left: 10px;
+        margin-right: 10px;
+        display: none;
+
+        @media (max-width: $screen-xs-max) {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
 
     &__list-row {
         margin-bottom: 10px;
@@ -141,6 +211,7 @@
     }
 
     &__product-list-handler {
+        cursor: pointer;
 
         @media (max-width: $screen-xs-max) {
             font-size: 0.85rem;
@@ -163,16 +234,33 @@
         display: none;
         margin-top: 5px;
     }
+
+    &__price {
+        display: inline-flex;
+        vertical-align: middle;
+        font-weight: 700;
+        margin-right: 10px;
+    }
 }
 
 .purchase-product-list {
+    background-color: #fff;
     width: 100%;
     display: table;
     table-layout: fixed;
+    padding-top: 10px;
     padding-bottom: 10px;
+    box-shadow: 0 0 2px rgba(#c8c7cc, 0.8);
 
     @media (max-width: $screen-xs-max) {
+        padding-top: 5px;
         padding-bottom: 5px;
+    }
+
+    @media (max-width: $screen-xs-min) {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
     }
 
     &_header {
@@ -191,63 +279,89 @@
     &__item {
         display: table-cell;
         vertical-align: top;
+
+        @media (max-width: $screen-xs-max) {
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: $screen-xs-min) {
+            display: flex;
+        }
     }
 
     &__item_image {
-        width: 200px;
-        padding-right: 10px;
-        padding-left: 10px;
-
-        @media (max-width: $screen-sm-max) {
-            width: 140px;
-        }
+        width: 100px;
+        text-align: center;
 
         @media (max-width: $screen-xs-max) {
             width: 60px;
         }
+
+        @media (max-width: $screen-xs-min) {
+            display: none;
+        }
     }
 
     &__item_text {
-        width: 60%;
+        @media (max-width: $screen-xs-min) {
+            flex-wrap: nowrap;
+            flex-basis: 100%;
+        }
+    }
+
+    &__item_price {
+        width: 100px;
+        vertical-align: middle;
+        text-align: center;
+        font-weight: 600;
+
+        @media (max-width: $screen-xs-max) {
+            width: 80px;
+        }
+
+        @media (max-width: $screen-xs-min) {
+            flex: 0 0 70%;
+            padding-left: 10px;
+            padding-bottom: 5px;
+        }
     }
 
     &__item_count {
-        width: 90px;
+        width: 70px;
         vertical-align: middle;
         text-align: center;
-
-        @media (max-width: $screen-sm-max) {
-            width: 70px;
-        }
 
         @media (max-width: $screen-xs-max) {
             width: 50px;
         }
+
+        @media (max-width: $screen-xs-min) {
+            flex: 0 0 30%;
+            padding-right: 10px;
+            padding-bottom: 5px;
+            text-align: right;
+        }
     }
 
     &__img {
-        max-width: 100%;
+        max-width: 90%;
         height: auto;
+        max-height: 100px;
         display: inline-block;
         vertical-align: middle;
-        margin-right: 10px;
     }
 
     &__content {
-        padding-top: 10px;
-        padding-bottom: 10px;
+        padding: 10px;
 
-        @media (max-width: $screen-sm-max) {
-            font-size: 0.85rem;
-        }
-
-        @media (max-width: $screen-xs-max) {
-            font-size: 0.75rem;
+        @media (max-width: $screen-xs-min) {
+            width: 100%;
+            box-sizing: border-box;
         }
     }
 
     &+ .purchase-product-list {
-        border-top: 1px solid #c8c7cc;
+        // border-top: 1px solid #c8c7cc;
         padding-top: 10px;
 
         @media (max-width: $screen-xs-max) {

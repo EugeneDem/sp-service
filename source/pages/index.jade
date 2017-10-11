@@ -26,50 +26,123 @@ block content
 								| )
 							.badge.badge-pill.badge-info Ожидает оплату
 					.purchase-list__item-content.js-drop-content
-						.purchase-item
-							.purchase-item__list
-								.purchase-item__list-row
+						// start: purchase-item-1
+						.purchase-item.js-drop
+							.purchase-item__header
+								.purchase-item__header-item.purchase-item__header-item_left.js-drop-handler
+									.ti-plus.purchase-item__icon-handler
 									.purchase-item__list-title
 										.purchase-item__list-label Закупка:
 										.purchase-item__list-name "Пуфикофф"
-								.purchase-item__list-row
+								.purchase-item__header-item.purchase-item__header-item_right
+									.purchase-item__price 1500 руб.
+									.btn-group
+										a.btn.btn-sm.btn-success(href="#")
+											i.ti-share
+											span Подтвердить оплату
+							.purchase-item__content.js-drop-content
+								.purchase-item__list
+									.purchase-item__list-row
+										.purchase-item__list-title
+											.purchase-item__list-label Организатор:
+											a.purchase-item__list-name(href="#") Танюша Федорцова
+									.purchase-item__list-row
+										.purchase-item__map-list
+											.purchase-item__map-list-label Пункт выдачи заказа:
+											#card-id-1-1.purchase-item__map-list-handler.is-danger.js-show-modal(data-target="#popup-map" data-popup="map-wrap" data-point="add") Не выбрано
+											.purchase-item__map-list-handler.is-warning Карта
+								.purchase-item__product-list.js-drop
+									.purchase-item__product-list-handler.js-drop-handler Посмотреть состав заказа
+										i.ti-angle-down
+									.purchase-item__product-list-content.js-drop-content
+										//- .purchase-product-list.purchase-product-list_header
+										//- 	.purchase-product-list__item.purchase-product-list__item_image Фото
+										//- 	.purchase-product-list__item.purchase-product-list__item_text Название
+										//- 	.purchase-product-list__item.purchase-product-list__item_count Кол-во
+										.purchase-product-list
+											.purchase-product-list__item.purchase-product-list__item_image
+												img.purchase-product-list__img(src="content/images/product/chicken.jpg")
+											.purchase-product-list__item.purchase-product-list__item_text
+												.purchase-product-list__content
+													a(href="#") Игрушка антистресс "Balle"
+											.purchase-product-list__item.purchase-product-list__item_price
+												span.hidden-sm-up Цена:&nbsp;
+												| 950 руб.
+											.purchase-product-list__item.purchase-product-list__item_count
+												span.hidden-sm-up Кол-во:&nbsp;
+												| 1
+										.purchase-product-list
+											.purchase-product-list__item.purchase-product-list__item_image
+												img.purchase-product-list__img(src="content/images/product/gag.jpg")
+											.purchase-product-list__item.purchase-product-list__item_text
+												.purchase-product-list__content
+													a(href="#") Игрушка розыгрыш "Блюющий желток"
+											.purchase-product-list__item.purchase-product-list__item_price
+												span.hidden-sm-up Цена:&nbsp;
+												| 650 руб.
+											.purchase-product-list__item.purchase-product-list__item_count
+												span.hidden-sm-up Кол-во:&nbsp;
+												| 1
+						// end: purchase-item-1
+						// start: purchase-item-2
+						.purchase-item.js-drop
+							.purchase-item__header
+								.purchase-item__header-item.purchase-item__header-item_left.js-drop-handler
+									.ti-plus.purchase-item__icon-handler
 									.purchase-item__list-title
-										.purchase-item__list-label Организатор:
-										a.purchase-item__list-name(href="#") Танюша Федорцова
-								.purchase-item__list-row
-									.purchase-item__map-list
-										.purchase-item__map-list-label Пункт выдачи заказа:
-										#card-id-1.purchase-item__map-list-handler.is-danger.js-show-modal(data-target="#popup-map" data-popup="map-wrap" data-point="add") Не выбрано
-										.purchase-item__map-list-handler.is-warning Карта
-							.purchase-item__product-list.js-drop
-								.purchase-item__product-list-handler.js-drop-handler Посмотреть состав заказа
-									i.ti-angle-down
-								.purchase-item__product-list-content.js-drop-content
-									.purchase-product-list.purchase-product-list_header
-										.purchase-product-list__item.purchase-product-list__item_image Фото
-										.purchase-product-list__item.purchase-product-list__item_text Название
-										.purchase-product-list__item.purchase-product-list__item_count Кол-во
-									.purchase-product-list
-										.purchase-product-list__item.purchase-product-list__item_image
-											img.purchase-product-list__img(src="content/images/product/gag.jpg")
-										.purchase-product-list__item.purchase-product-list__item_text
-											.purchase-product-list__content Игрушка антистресс "Balle"
-										.purchase-product-list__item.purchase-product-list__item_count 1
-									.purchase-product-list
-										.purchase-product-list__item.purchase-product-list__item_image
-											img.purchase-product-list__img(src="content/images/product/chicken.jpg")
-										.purchase-product-list__item.purchase-product-list__item_text
-											.purchase-product-list__content Игрушка розыгрыш "Блюющий желток"
-										.purchase-product-list__item.purchase-product-list__item_count 1
-					.purchase-list__item-footer
-						.purchase-item__list-row
-							.purchase-item__list-title
-								.purchase-item__list-label Сумма:
-								.purchase-item__list-name 1500 руб.
-						.btn-group
-							.btn.btn-sm.btn-success
-								i.ti-share
-								span Подтвердить оплату
+										.purchase-item__list-label Закупка:
+										.purchase-item__list-name "Пуфикофф"
+								.purchase-item__header-item.purchase-item__header-item_right
+									.purchase-item__price 1500 руб.
+									.btn-group
+										a.btn.btn-sm.btn-success(href="#")
+											i.ti-share
+											span Подтвердить оплату
+							.purchase-item__content.js-drop-content
+								.purchase-item__list
+									.purchase-item__list-row
+										.purchase-item__list-title
+											.purchase-item__list-label Организатор:
+											a.purchase-item__list-name(href="#") Танюша Федорцова
+									.purchase-item__list-row
+										.purchase-item__map-list
+											.purchase-item__map-list-label Пункт выдачи заказа:
+											#card-id-1-2.purchase-item__map-list-handler.is-danger.js-show-modal(data-target="#popup-map" data-popup="map-wrap" data-point="add") Не выбрано
+											.purchase-item__map-list-handler.is-warning Карта
+								.purchase-item__product-list.js-drop
+									.purchase-item__product-list-handler.js-drop-handler Посмотреть состав заказа
+										i.ti-angle-down
+									.purchase-item__product-list-content.js-drop-content
+										//- .purchase-product-list.purchase-product-list_header
+										//- 	.purchase-product-list__item.purchase-product-list__item_image Фото
+										//- 	.purchase-product-list__item.purchase-product-list__item_text Название
+										//- 	.purchase-product-list__item.purchase-product-list__item_count Кол-во
+										.purchase-product-list
+											.purchase-product-list__item.purchase-product-list__item_image
+												img.purchase-product-list__img(src="content/images/product/chicken.jpg")
+											.purchase-product-list__item.purchase-product-list__item_text
+												.purchase-product-list__content
+													a(href="#") Игрушка антистресс "Balle"
+											.purchase-product-list__item.purchase-product-list__item_price
+												span.hidden-sm-up Цена:&nbsp;
+												| 950 руб.
+											.purchase-product-list__item.purchase-product-list__item_count
+												span.hidden-sm-up Кол-во:&nbsp;
+												| 1
+										.purchase-product-list
+											.purchase-product-list__item.purchase-product-list__item_image
+												img.purchase-product-list__img(src="content/images/product/gag.jpg")
+											.purchase-product-list__item.purchase-product-list__item_text
+												.purchase-product-list__content
+													a(href="#") Игрушка розыгрыш "Блюющий желток"
+											.purchase-product-list__item.purchase-product-list__item_price
+												span.hidden-sm-up Цена:&nbsp;
+												| 650 руб.
+											.purchase-product-list__item.purchase-product-list__item_count
+												span.hidden-sm-up Кол-во:&nbsp;
+												| 1
+						// end: purchase-item-2
+
 				.purchase-list__item.js-drop
 					.purchase-list__item-heading
 						.purchase-list__handler.js-drop-handler
@@ -80,58 +153,49 @@ block content
 								| )
 							.badge.badge-pill.badge-success Оплачено
 					.purchase-list__item-content.js-drop-content
-						.purchase-item
-							.purchase-item__list
-								.purchase-item__list-row
+						// start: purchase-item-1
+						.purchase-item.js-drop
+							.purchase-item__header
+								.purchase-item__header-item.purchase-item__header-item_left.js-drop-handler
+									.ti-plus.purchase-item__icon-handler
 									.purchase-item__list-title
 										.purchase-item__list-label Закупка:
 										.purchase-item__list-name "Smart Baby Watch"
-								.purchase-item__list-row
-									.purchase-item__list-title
-										.purchase-item__list-label Организатор:
-										a.purchase-item__list-name(href="#") Екатерина Игнаткова
-								.purchase-item__list-row
-									.purchase-item__map-list
-										.purchase-item__map-list-label Пункт выдачи заказа:
-										#card-id-2.purchase-item__map-list-handler.is-info.js-show-modal(data-target="#popup-map" data-popup="map-wrap" data-point="edit") Изменить
-										.purchase-item__map-list-handler.is-warning Карта
-									.purchase-item__map-list
-										.purchase-item__map-list-title.js-map-title "Офис Бежицкий район"
-									.purchase-item__map-list
-										.purchase-item__map-list-label Время работы:
-										.purchase-item__map-list-text.js-map-time
-											span среда 17.00-18.00, 
-											span суббота 13.30-14.30
-									.purchase-item__map-list
-										.purchase-item__map-list-label Адрес:
-										.purchase-item__map-list-text.js-map-address ул. 3 Интернационала, д.1
-							.purchase-item__heading
-							.purchase-item__product-list.js-drop
-								.purchase-item__product-list-handler.js-drop-handler Посмотреть состав заказа
-									i.ti-angle-down
-								.purchase-item__product-list-content.js-drop-content
-									.purchase-product-list.purchase-product-list_header
-										.purchase-product-list__item.purchase-product-list__item_image Фото
-										.purchase-product-list__item.purchase-product-list__item_text Название
-										.purchase-product-list__item.purchase-product-list__item_count Кол-во
-									.purchase-product-list
-										.purchase-product-list__item.purchase-product-list__item_image
-											img.purchase-product-list__img(src="content/images/product/gag.jpg")
-										.purchase-product-list__item.purchase-product-list__item_text
-											.purchase-product-list__content Игрушка антистресс "Balle"
-										.purchase-product-list__item.purchase-product-list__item_count 1
-									.purchase-product-list
-										.purchase-product-list__item.purchase-product-list__item_image
-											img.purchase-product-list__img(src="content/images/product/chicken.jpg")
-										.purchase-product-list__item.purchase-product-list__item_text
-											.purchase-product-list__content Игрушка розыгрыш "Блюющий желток"
-										.purchase-product-list__item.purchase-product-list__item_count 1
-					.purchase-list__item-footer
-						.purchase-item__list-row
-							.purchase-item__list-title
-								.purchase-item__list-label Сумма:
-								.purchase-item__list-name 7200 руб.
-						.btn-group
-							.btn.btn-sm.btn-danger
-								i.ti-share-alt
-								span Отменить оплату
+								.purchase-item__header-item.purchase-item__header-item_right
+									.purchase-item__price 7200 руб.
+									.btn-group
+										.btn.btn-sm.btn-danger
+											i.ti-share-alt
+											span Отменить оплату
+							.purchase-item__content.js-drop-content
+								.purchase-item__list
+									.purchase-item__list-row
+										.purchase-item__list-title
+											.purchase-item__list-label Организатор:
+											a.purchase-item__list-name(href="#") Екатерина Игнаткова
+									.purchase-item__list-row
+										.purchase-item__map-list
+											.purchase-item__map-list-label Пункт выдачи заказа:
+											#card-id-2-1.purchase-item__map-list-handler.is-info.js-show-modal(data-target="#popup-map" data-popup="map-wrap" data-point="edit") Изменить
+											.purchase-item__map-list-handler.is-warning Карта
+								.purchase-item__product-list.js-drop
+									.purchase-item__product-list-handler.js-drop-handler Посмотреть состав заказа
+										i.ti-angle-down
+									.purchase-item__product-list-content.js-drop-content
+										//- .purchase-product-list.purchase-product-list_header
+										//- 	.purchase-product-list__item.purchase-product-list__item_image Фото
+										//- 	.purchase-product-list__item.purchase-product-list__item_text Название
+										//- 	.purchase-product-list__item.purchase-product-list__item_count Кол-во
+										.purchase-product-list
+											.purchase-product-list__item.purchase-product-list__item_image
+												img.purchase-product-list__img(src="content/images/product/jacket-women.jpg")
+											.purchase-product-list__item.purchase-product-list__item_text
+												.purchase-product-list__content
+													a(href="#") Зимняя женская куртка с мехом енота
+											.purchase-product-list__item.purchase-product-list__item_price 
+												span.hidden-sm-up Цена:&nbsp;
+												| 7200 руб.
+											.purchase-product-list__item.purchase-product-list__item_count
+												span.hidden-sm-up Кол-во:&nbsp;
+												| 1
+						// end: purchase-item-1
