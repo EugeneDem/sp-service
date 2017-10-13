@@ -3,6 +3,9 @@ block page
 
 extends ../blocks/layout/layout
 
+block scripts
+	script(src="https://api-maps.yandex.ru/2.1/?lang=ru_RU")
+
 block content
 	.main-content-title
 		.row
@@ -11,7 +14,7 @@ block content
 	.container-fluid
 		.address-list
 			.row
-				each value in addressList
+				each value, ind in addressList
 					.col-12.col-sm-6.col-lg-4.address-list__item
 						.address-card
 							.address-card__header
@@ -32,6 +35,6 @@ block content
 											td!= value.works
 										tr
 											td(colspan="2")
-												a(href="#")
+												a.js-show-modal-single(data-target="#popup-map-single" data-popup="map-wrap-single" data-id=ind+1 href="#")
 													i.ti-location-pin
 													|  Посмотреть на&nbsp;карте

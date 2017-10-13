@@ -17,8 +17,8 @@ block content
 		.purchase
 			.purchase-list
 				.purchase-list__item.js-drop
-					.purchase-list__item-heading
-						.purchase-list__handler.js-drop-handler
+					.purchase-list__item-heading.js-drop-handler
+						.purchase-list__handler
 						.purchase-list__title-wrap
 							span.purchase-list__title(data-count="2") Открыта
 								| (
@@ -50,7 +50,7 @@ block content
 										.purchase-item__map-list
 											.purchase-item__map-list-label Пункт выдачи заказа:
 											#card-id-1-1.purchase-item__map-list-handler.is-danger.js-show-modal(data-target="#popup-map" data-popup="map-wrap" data-point="add") Не выбрано
-											.purchase-item__map-list-handler.is-warning Карта
+											.purchase-item__map-list-handler.is-warning.js-show-modal-single(data-target="#popup-map-single" data-popup="map-wrap-single" data-id="2") Карта
 								.purchase-item__product-list.js-drop
 									.purchase-item__product-list-handler.js-drop-handler Посмотреть состав заказа
 										i.ti-angle-down
@@ -108,7 +108,7 @@ block content
 										.purchase-item__map-list
 											.purchase-item__map-list-label Пункт выдачи заказа:
 											#card-id-1-2.purchase-item__map-list-handler.is-danger.js-show-modal(data-target="#popup-map" data-popup="map-wrap" data-point="add") Не выбрано
-											.purchase-item__map-list-handler.is-warning Карта
+											.purchase-item__map-list-handler.is-warning.js-show-modal-single(data-target="#popup-map-single" data-popup="map-wrap-single" data-id="") Карта
 								.purchase-item__product-list.js-drop
 									.purchase-item__product-list-handler.js-drop-handler Посмотреть состав заказа
 										i.ti-angle-down
@@ -144,8 +144,8 @@ block content
 						// end: purchase-item-2
 
 				.purchase-list__item.js-drop
-					.purchase-list__item-heading
-						.purchase-list__handler.js-drop-handler
+					.purchase-list__item-heading.js-drop-handler
+						.purchase-list__handler
 						.purchase-list__title-wrap
 							span.purchase-list__title(data-count="1") Выдача
 								| (
@@ -177,7 +177,7 @@ block content
 										.purchase-item__map-list
 											.purchase-item__map-list-label Пункт выдачи заказа:
 											#card-id-2-1.purchase-item__map-list-handler.is-info.js-show-modal(data-target="#popup-map" data-popup="map-wrap" data-point="edit") Изменить
-											.purchase-item__map-list-handler.is-warning Карта
+											.purchase-item__map-list-handler.is-warning.js-show-modal-single(data-target="#popup-map-single" data-popup="map-wrap-single" data-id="4") Карта
 								.purchase-item__product-list.js-drop
 									.purchase-item__product-list-handler.js-drop-handler Посмотреть состав заказа
 										i.ti-angle-down

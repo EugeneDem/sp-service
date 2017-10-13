@@ -16,6 +16,7 @@
         padding-left: 10px;
         height: 40px;
         line-height: 40px;
+        cursor: pointer;
     }
 
     &__title-wrap {
@@ -52,7 +53,6 @@
         position: absolute;
         top: 0;
         right: 0;
-        cursor: pointer;
 
         &:before {
             background: url("drop-arrow.svg#datauri") no-repeat 0 0;
@@ -244,13 +244,13 @@
 }
 
 .purchase-product-list {
-    background-color: #fff;
+    border-top: 1px solid #c8c7cc;
+    border-bottom: 1px solid #c8c7cc;
     width: 100%;
     display: table;
     table-layout: fixed;
     padding-top: 10px;
     padding-bottom: 10px;
-    box-shadow: 0 0 2px rgba(#c8c7cc, 0.8);
 
     @media (max-width: $screen-xs-max) {
         padding-top: 5px;
@@ -361,7 +361,7 @@
     }
 
     &+ .purchase-product-list {
-        // border-top: 1px solid #c8c7cc;
+        border-top: medium none;
         padding-top: 10px;
 
         @media (max-width: $screen-xs-max) {

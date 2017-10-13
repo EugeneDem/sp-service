@@ -126,8 +126,8 @@
               <div class="purchase">
                 <div class="purchase-list">
                   <div class="purchase-list__item js-drop">
-                    <div class="purchase-list__item-heading">
-                      <div class="purchase-list__handler js-drop-handler"></div>
+                    <div class="purchase-list__item-heading js-drop-handler">
+                      <div class="purchase-list__handler"></div>
                       <div class="purchase-list__title-wrap"><span data-count="2" class="purchase-list__title">
                           Открыта
                           (<i class="purchase-list__count">2</i>)</span>
@@ -161,7 +161,7 @@
                               <div class="purchase-item__map-list">
                                 <div class="purchase-item__map-list-label">Пункт выдачи заказа:</div>
                                 <div id="card-id-1-1" data-target="#popup-map" data-popup="map-wrap" data-point="add" class="purchase-item__map-list-handler is-danger js-show-modal">Не выбрано</div>
-                                <div class="purchase-item__map-list-handler is-warning">Карта</div>
+                                <div data-target="#popup-map-single" data-popup="map-wrap-single" data-id="2" class="purchase-item__map-list-handler is-warning js-show-modal-single">Карта</div>
                               </div>
                             </div>
                           </div>
@@ -215,7 +215,7 @@
                               <div class="purchase-item__map-list">
                                 <div class="purchase-item__map-list-label">Пункт выдачи заказа:</div>
                                 <div id="card-id-1-2" data-target="#popup-map" data-popup="map-wrap" data-point="add" class="purchase-item__map-list-handler is-danger js-show-modal">Не выбрано</div>
-                                <div class="purchase-item__map-list-handler is-warning">Карта</div>
+                                <div data-target="#popup-map-single" data-popup="map-wrap-single" data-id="" class="purchase-item__map-list-handler is-warning js-show-modal-single">Карта</div>
                               </div>
                             </div>
                           </div>
@@ -246,8 +246,8 @@
                     </div>
                   </div>
                   <div class="purchase-list__item js-drop">
-                    <div class="purchase-list__item-heading">
-                      <div class="purchase-list__handler js-drop-handler"></div>
+                    <div class="purchase-list__item-heading js-drop-handler">
+                      <div class="purchase-list__handler"></div>
                       <div class="purchase-list__title-wrap"><span data-count="1" class="purchase-list__title">
                           Выдача
                           (<i class="purchase-list__count">1</i>)</span>
@@ -283,7 +283,7 @@
                               <div class="purchase-item__map-list">
                                 <div class="purchase-item__map-list-label">Пункт выдачи заказа:</div>
                                 <div id="card-id-2-1" data-target="#popup-map" data-popup="map-wrap" data-point="edit" class="purchase-item__map-list-handler is-info js-show-modal">Изменить</div>
-                                <div class="purchase-item__map-list-handler is-warning">Карта</div>
+                                <div data-target="#popup-map-single" data-popup="map-wrap-single" data-id="4" class="purchase-item__map-list-handler is-warning js-show-modal-single">Карта</div>
                               </div>
                             </div>
                           </div>
@@ -310,91 +310,6 @@
             </div>
           </div>
           <div id="popup-map" class="modal fade">
-            <script>
-              var dataMap = [
-              	{
-              		"id": 1,
-              		"city": "Москва",
-              		"title": "Офис Бежицкий район",
-              		"address": "Череповецкая улица, 17",
-              		"coordinates": [55.898937, 37.585134],
-              		"time": "пн-вс: с 9:00 до 21:00"
-              	},
-              	{
-              		"id": 2,
-              		"city": "Москва",
-              		"title": "Офис Бежицкий район",
-              		"address": "проезд Дежнёва, 5",
-              		"coordinates": [55.871152, 37.646184],
-              		"time": "пн-вс: с 9:00 до 21:00"
-              	},
-              	{
-              		"id": 3,
-              		"city": "Москва",
-              		"title": "Офис Бежицкий район",
-              		"address": "Адмирала Лазарева, 2",
-              		"coordinates": [55.547036, 37.543237],
-              		"time": "пн-вс: с 9:00 до 21:00"
-              	},
-              	{
-              		"id": 4,
-              		"city": "Москва",
-              		"title": "Офис Бежицкий район",
-              		"address": "Пролетарский проспект, 19к1",
-              		"coordinates": [55.641229, 37.656173],
-              		"time": "пн-вс: с 9:00 до 21:00"
-              	},
-              	{
-              		"id": 5,
-              		"city": "Москва",
-              		"title": "Офис Бежицкий район",
-              		"address": "улица Гарибальди, 23",
-              		"coordinates": [55.671498, 37.553792],
-              		"time": "пн-вс: с 9:00 до 21:00"
-              	},
-              	{
-              		"id": 6,
-              		"city": "Москва",
-              		"title": "Офис Бежицкий район",
-              		"address": "Планерная улица, 7",
-              		"coordinates": [55.862969, 37.434918],
-              		"time": "пн-вс: с 9:00 до 21:00"
-              	},
-              	{
-              		"id": 7,
-              		"city": "Москва",
-              		"title": "Офис Бежицкий район",
-              		"address": "ул. Щербаковская, 7а",
-              		"coordinates": [55.782754, 37.726583],
-              		"time": "пн-вс: с 9:00 до 21:00"
-              	},
-              	{
-              		"id": 8,
-              		"city": "Москва",
-              		"title": "Офис Бежицкий район",
-              		"address": "Сходненская улица, 56",
-              		"coordinates": [55.850408, 37.44409],
-              		"time": "пн-вс: с 9:00 до 21:00"
-              	},
-              	{
-              		"id": 9,
-              		"city": "Москва",
-              		"title": "Офис Бежицкий район",
-              		"address": "улица Покрышкина, 5",
-              		"coordinates": [55.664436, 37.469216],
-              		"time": "пн-вс: с 9:00 до 21:00"
-              	},
-              	{
-              		"id": 10,
-              		"city": "Москва",
-              		"title": "Офис Бежицкий район",
-              		"address": "Зеленоград, к1549",
-              		"coordinates": [55.977944, 37.15503],
-              		"time": "пн-вс: с 9:00 до 21:00"
-              	}
-              ]
-              
-            </script>
             <div class="modal-dialog modal-lg">
               <div class="modal-content">
                 <div class="modal-header">
@@ -410,6 +325,21 @@
                       <div class="map-wrap__nav-scrollbar">
                       </div>
                     </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="popup-map-single" class="modal fade">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">Выберите ближайший к Вам пункт выдачи</h4>
+                  <button type="button" data-dismiss="modal" aria-hidden="true" class="close">×</button>
+                </div>
+                <div class="modal-body">
+                  <div class="map-wrap">
+                    <div id="map-wrap-single" style="width: 100%; height: 400px"></div>
                   </div>
                 </div>
               </div>
@@ -434,6 +364,90 @@
     <script src="assets/js/vendor/bootstrap.min.js"></script>
     <script src="assets/js/vendor/perfect-scrollbar.min.js"></script>
     <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU"></script>
+    <script>
+      var dataMap = [
+      	{
+      		"id": 1,
+      		"city": "Москва",
+      		"title": "Офис Бежицкий район",
+      		"address": "Череповецкая улица, 17",
+      		"coordinates": [55.898937, 37.585134],
+      		"time": "пн-вс: с 9:00 до 21:00"
+      	},
+      	{
+      		"id": 2,
+      		"city": "Москва",
+      		"title": "Офис Бежицкий район",
+      		"address": "проезд Дежнёва, 5",
+      		"coordinates": [55.871152, 37.646184],
+      		"time": "пн-вс: с 9:00 до 21:00"
+      	},
+      	{
+      		"id": 3,
+      		"city": "Москва",
+      		"title": "Офис Бежицкий район",
+      		"address": "Адмирала Лазарева, 2",
+      		"coordinates": [55.547036, 37.543237],
+      		"time": "пн-вс: с 9:00 до 21:00"
+      	},
+      	{
+      		"id": 4,
+      		"city": "Москва",
+      		"title": "Офис Бежицкий район",
+      		"address": "Пролетарский проспект, 19к1",
+      		"coordinates": [55.641229, 37.656173],
+      		"time": "пн-вс: с 9:00 до 21:00"
+      	},
+      	{
+      		"id": 5,
+      		"city": "Москва",
+      		"title": "Офис Бежицкий район",
+      		"address": "улица Гарибальди, 23",
+      		"coordinates": [55.671498, 37.553792],
+      		"time": "пн-вс: с 9:00 до 21:00"
+      	},
+      	{
+      		"id": 6,
+      		"city": "Москва",
+      		"title": "Офис Бежицкий район",
+      		"address": "Планерная улица, 7",
+      		"coordinates": [55.862969, 37.434918],
+      		"time": "пн-вс: с 9:00 до 21:00"
+      	},
+      	{
+      		"id": 7,
+      		"city": "Москва",
+      		"title": "Офис Бежицкий район",
+      		"address": "ул. Щербаковская, 7а",
+      		"coordinates": [55.782754, 37.726583],
+      		"time": "пн-вс: с 9:00 до 21:00"
+      	},
+      	{
+      		"id": 8,
+      		"city": "Москва",
+      		"title": "Офис Бежицкий район",
+      		"address": "Сходненская улица, 56",
+      		"coordinates": [55.850408, 37.44409],
+      		"time": "пн-вс: с 9:00 до 21:00"
+      	},
+      	{
+      		"id": 9,
+      		"city": "Москва",
+      		"title": "Офис Бежицкий район",
+      		"address": "улица Покрышкина, 5",
+      		"coordinates": [55.664436, 37.469216],
+      		"time": "пн-вс: с 9:00 до 21:00"
+      	},
+      	{
+      		"id": 10,
+      		"city": "Москва",
+      		"title": "Офис Бежицкий район",
+      		"address": "Зеленоград, к1549",
+      		"coordinates": [55.977944, 37.15503],
+      		"time": "пн-вс: с 9:00 до 21:00"
+      	}
+      ]
+    </script>
     <script src="assets/js/main.js"></script>
   </body>
 </html>
