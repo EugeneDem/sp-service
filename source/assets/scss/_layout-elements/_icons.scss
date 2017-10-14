@@ -1,0 +1,34 @@
+.the-icons {
+    list-style: none;
+    margin: 20px 0;
+    padding: 0;
+
+    .fa-hover {
+        display: block;
+        height: 32px;
+        line-height: 32px;
+        padding-left: 10px;
+        color: #8B91A0;
+        cursor: pointer;
+        transition: font-size, 0.2s, ease 0s;
+
+        &:hover {
+            font-size: 1.1rem;
+
+            .fa,
+            [class*="ti-"] {
+                font-size: 1.1rem;
+            }
+        }
+
+        .fa,
+        [class*="ti-"] {
+            display: inline-block;
+            font-size: 1rem;
+            margin-right: 10px;
+            text-align: right;
+            width: 32px;
+            color: inherit;
+        }
+    }
+}

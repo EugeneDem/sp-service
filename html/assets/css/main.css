@@ -67,24 +67,18 @@ body {
   box-shadow: none;
 }
 
-.nav-pills > li.active > a,.nav-pills > li.active > a:hover,.nav-pills > li.active > a:focus {
-  background-color: #007AFF;
-  color: #fff;
-}
-
-.nav-pills > li > a {
-  border-radius: 10px;
-}
-
-.list-group-item.active,.list-group-item.active:hover,.list-group-item.active:focus {
-  border-color: #007AFF;
-  background-color: #007AFF;
-}
-
 .container-fullw {
   margin-right: -15px;
   margin-left: -15px;
   padding: 30px;
+}
+
+.container-fullw + .container-fullw {
+  border-top: 1px solid #eee;
+}
+
+.bg-white {
+  background-color: #fff;
 }
 
 .item-content {
@@ -1577,6 +1571,39 @@ ul.sub-menu li ul.sub-menu li ul.sub-menu li a {
   margin-bottom: 6px;
   font-weight: 700;
   font-size: 14px;
+}
+
+.the-icons {
+  margin: 20px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.the-icons .fa-hover {
+  display: block;
+  padding-left: 10px;
+  height: 32px;
+  color: #8B91A0;
+  line-height: 32px;
+  cursor: pointer;
+  transition: font-size, 0.2s, ease 0s;
+}
+
+.the-icons .fa-hover:hover {
+  font-size: 1.1rem;
+}
+
+.the-icons .fa-hover:hover .fa,.the-icons .fa-hover:hover [class*="ti-"] {
+  font-size: 1.1rem;
+}
+
+.the-icons .fa-hover .fa,.the-icons .fa-hover [class*="ti-"] {
+  display: inline-block;
+  margin-right: 10px;
+  width: 32px;
+  color: inherit;
+  text-align: right;
+  font-size: 1rem;
 }
 
 @media (min-width: 768px) {

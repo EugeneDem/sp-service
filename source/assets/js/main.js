@@ -112,17 +112,17 @@ var Main = function () {
     };
 
 
-    var perfectScrollbarHandler = function () {
-        pScroll = $('.perfect-scrollbar');
+    var niceScrollbarHandler = function () {
+        pScroll = $('.nice-scrollbar');
 
-        if (!isMobile() && pScroll.length) {
-            pScroll.perfectScrollbar({
-                suppressScrollX: true
-            });
-            pScroll.on('mousemove', function () {
-                $(this).perfectScrollbar('update');
-            });
-        }
+        pScroll.niceScroll({
+            cursorcolor: '#000',
+            cursoropacitymax: 0.3,
+            cursorwidth: 6,
+            cursorborder: '1px solid rgba(0, 0, 0, 0.3)',
+            cursorborderradius: '3px',
+            railpadding: { top: 0, right: 5, left: 0, bottom: 0 }
+        });
     };
 
     var modalOpen = function () {
@@ -210,14 +210,16 @@ var Main = function () {
 
             window.popupMap.pScroll = $('.map-wrap__nav-scrollbar');
             window.popupMap.pScroll.html(html);
-            window.popupMap.pScroll.perfectScrollbar({
-                suppressScrollX: true,
-                minScrollbarLength: 20
-            });
-
-            window.popupMap.pScroll.on("mousemove", function () {
-                $(this).perfectScrollbar('update');
-            });
+            setTimeout(function () {
+                window.popupMap.pScroll.niceScroll({
+                    cursorcolor: '#000',
+                    cursoropacitymax: 0.3,
+                    cursorwidth: 6,
+                    cursorborder: '1px solid rgba(0, 0, 0, 0.3)',
+                    cursorborderradius: '3px',
+                    zindex: 9999
+                });
+            }, 300);
 
             if (window.popupMap.map.status == 'edit') {
                 listItem = $('#' + window.popupMap.map.id).parents('.modal').find('.map-wrap__nav-list-item[data-id="' + window.popupMap.curid + '"]');
@@ -228,7 +230,6 @@ var Main = function () {
             if (window.popupMap.map.status == 'add') {
                 $('#' + window.popupMap.map.id).parents('.modal').find('.js-map-cover').text('Выберите адрес');
             }
-
         },
 
         destroy: function (id) {
@@ -236,7 +237,7 @@ var Main = function () {
             window.popupMap.clusterer.removeAll();
             window.popupMap.eData = [];
             window.popupMap.ePlacemarkArray = [];
-            $(id).find('.map-wrap__nav-scrollbar').perfectScrollbar('destroy');
+            window.popupMap.pScroll.getNiceScroll().remove();
             $(id).find('.map-wrap__nav-list').empty().remove();
         },
 
@@ -268,7 +269,7 @@ var Main = function () {
                     parentEl.removeClass('is-open');
                 } else {
                     parentEl.addClass('is-open');
-                    window.popupMap.pScroll.perfectScrollbar('update');
+                    window.popupMap.pScroll.getNiceScroll().resize();
                 }
             });
         },
@@ -535,7 +536,7 @@ var Main = function () {
             navbarHandler();
             resizeHandler();
             goTopHandler();
-            perfectScrollbarHandler();
+            niceScrollbarHandler();
             modalOpen();
         }
     };

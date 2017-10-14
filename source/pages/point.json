@@ -3,7 +3,7 @@
 		{
 			"page": "index",
 			"title": "Мои закупки",
-			"link": "/",
+			"link": "/index.html",
 			"icon": "ti-shopping-cart-full"
 		},
 		{
@@ -21,8 +21,14 @@
 		{
 			"page": "unsubs",
 			"title": "Отписаться от уведомлений",
-			"link": "/unsubs",
+			"link": "/unsubs.html",
 			"icon": "ti-email"
+		},
+		{
+			"page": "terms",
+			"title": "Пользовательское соглашение",
+			"link": "/terms.html",
+			"icon": "ti-receipt"
 		}
 	],
 	"addressList": [

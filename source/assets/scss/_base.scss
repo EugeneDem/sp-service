@@ -114,20 +114,6 @@ body {
   box-shadow: none;
 }
 
-.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
-  color: #fff;
-  background-color: #007AFF;
-}
-
-.nav-pills > li > a {
-  border-radius: 10px;
-}
-
-.list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
-  background-color: #007AFF;
-  border-color: #007AFF;
-}
-
 .container-fullw {
   padding: 30px;
   margin-right: -15px;
@@ -137,4 +123,12 @@ body {
     padding-right: 15px;
     padding-left: 15px;
   }
+
+  &+ .container-fullw {
+    border-top: 1px solid #eee;
+  }
+}
+
+.bg-white {
+  background-color: #fff;
 }

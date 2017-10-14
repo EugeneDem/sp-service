@@ -1,0 +1,20 @@
+block page
+	-var page = "unsubs";
+
+extends ../blocks/layout/layout
+
+block content
+	.main-content-title
+		.row
+			.col-12
+				h1.page-title Отписка от оповещений группы
+	.container-fluid.container-fullw.bg-white
+		.row
+			.col-12
+				.card.panel-white.text-center
+					.card-block
+						h3.card-title В настоящий момент вы учавствуете в <span>4</span> закупках.
+						h4.card-subtitle.mb-2.text-muted Отписавшись, вы перестанете получать уведомления по всем закупкам.
+					.card-block
+						p.card-text Чтобы отписаться от уведомлений группы нажмите кнопку "Запретить уведомления"
+						a.btn.btn-info(href="#") Запретить уведомления
