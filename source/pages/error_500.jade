@@ -1,0 +1,16 @@
+block page
+	-var page = "login";
+
+extends ../blocks/layout/layout-login
+
+block content
+	.full-page
+		.full-page__wrap
+			.container
+				.col-12.error-box
+					.error-box__number.text-danger 500
+					.col-12.col-sm-10.offset-sm-1.col-md-8.offset-md-2.col-lg-6.offset-lg-3.error-box__details
+						h3 Oops! You are stuck at 500
+						p Something's wrong! <br />It looks as though we've broken something on our system.<br />Don't panic, we are fixing it! Please come back in a while.
+			.full-page__footer
+				p &copy;&nbsp;2017 По всем вопросам обращаться <a href="https://vk.com/danila_sps" target="_blank">DGOLOVIN</a>

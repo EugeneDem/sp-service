@@ -1614,7 +1614,7 @@ ul.sub-menu li ul.sub-menu li ul.sub-menu li a {
   font-size: 14px;
 }
 
-.login {
+.full-page {
   display: table;
   min-height: 100%;
   width: 100%;
@@ -1622,12 +1622,12 @@ ul.sub-menu li ul.sub-menu li ul.sub-menu li a {
   box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.5);
 }
 
-.login__wrap {
+.full-page__wrap {
   display: table-cell;
   vertical-align: middle;
 }
 
-.login__footer {
+.full-page__footer {
   position: fixed;
   bottom: 0;
   padding: 10px 20px 0;
@@ -1682,6 +1682,25 @@ ul.sub-menu li ul.sub-menu li ul.sub-menu li a {
 
 .login-box__social .fa-facebook:hover {
   color: #2f497a;
+}
+
+.error-box__number {
+  display: block;
+  margin-top: 0;
+  text-align: center;
+  letter-spacing: -10px;
+  font-weight: 300;
+  font-size: 12rem;
+  line-height: 12rem;
+}
+
+.error-box__details {
+  padding-top: 10px;
+  text-align: center;
+}
+
+.error-box .btn-return {
+  margin: 10px 0;
 }
 
 .the-icons {
@@ -2509,13 +2528,17 @@ ul.sub-menu li ul.sub-menu li ul.sub-menu li a {
     padding-top: 5px;
   }
 
-  .login__wrap {
+  .full-page__wrap {
     vertical-align: top;
   }
 
   .login-box {
     margin-top: 60px;
     max-width: 280px;
+  }
+
+  .error-box {
+    margin-top: 30px;
   }
 }
 
