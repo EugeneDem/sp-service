@@ -1,0 +1,23 @@
+.animated {
+  animation-duration: 5s;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
+}
+
+.shake {
+  animation-name: shake;
+}
+
+@keyframes shake {
+  0%, 35%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  5%, 15%, 25% {
+    transform: translate3d(-5px, 0, 0) rotate3d(0, 0, 1, 5deg);
+  }
+
+  10%, 20%, 30% {
+    transform: translate3d(5px, 0, 0) rotate3d(0, 0, 1, -5deg);
+  }
+}

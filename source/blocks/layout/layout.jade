@@ -42,9 +42,20 @@ html(lang='ru')
 							// start: MESSAGES DROPDOWN
 							li.nav-item.dropdown
 								a.nav-link.dropdown-toggle(href="#" data-toggle="dropdown")
+									i.ti-gift.shake.animated
+									span Подарок
+								ul.dropdown-menu.dropdown-dark.dropdown-gift.dropdown-large
+									li
+										.drop-down-wrapper.ps-container
+											p Евгений, коллектив &laquo;СП&nbsp;ВМЕСТЕ&raquo; поздравляет Вас с&nbsp;Днем Рождения!!!
+											p От&nbsp;всей души желаем Вам благополучия и&nbsp;крепкого здоровья!
+											p В&nbsp;честь Дня Рождения мы&nbsp;дарим Вам заказ без орг. сбора!!!
+											p P.S. Подробную информацию смотрите в&nbsp;разделе <a href="#">Скидка&nbsp;ДР <i class="ti-new-window"></i></a>.
+							li.nav-item.dropdown
+								a.nav-link.dropdown-toggle(href="#" data-toggle="dropdown")
 									span.dot-badge.partition-red
 									i.ti-comment
-									span MESSAGES
+									span Сообщения
 								ul.dropdown-menu.dropdown-light.dropdown-messages.dropdown-large
 									li
 										span.dropdown-header Unread messages
@@ -87,7 +98,7 @@ html(lang='ru')
 									img(src="content/images/noavatar.png" alt="User Name")
 									span.username User Name
 										i.ti-angle-down
-								ul.dropdown-menu.dropdown-dark
+								ul.dropdown-menu.dropdown-dark.nav-login-list
 									li
 										a(href="pages_user_profile.html") My Profile
 									li

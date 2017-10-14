@@ -11,10 +11,10 @@
         transform: translate3d(0, 0, 0);
         z-index: 1088;
 
-
         .footer-inner {
             padding: 0 20px;
             line-height: 50px;
+            @include clearfix;
         }
     }
 
