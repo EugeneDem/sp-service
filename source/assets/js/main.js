@@ -27,24 +27,24 @@ var Main = function () {
     var toggleClassOnElement = function () {
         var toggleAttribute = $('*[data-toggle-class]');
         toggleAttribute.each(function () {
-            var _this = $(this);
-            var toggleClass = _this.attr('data-toggle-class');
+            var $this = $(this);
+            var toggleClass = $this.attr('data-toggle-class');
             var outsideElement;
             var toggleElement;
-            typeof _this.attr('data-toggle-target') !== 'undefined' ? toggleElement = $(_this.attr('data-toggle-target')) : toggleElement = _this;
-            _this.on("click", function (e) {
-                if (_this.attr('data-toggle-type') !== 'undefined' && _this.attr('data-toggle-type') == "on") {
+            typeof $this.attr('data-toggle-target') !== 'undefined' ? toggleElement = $($this.attr('data-toggle-target')) : toggleElement = $this;
+            $this.on('click', function (e) {
+                if ($this.attr('data-toggle-type') !== 'undefined' && $this.attr('data-toggle-type') == 'on') {
                     toggleElement.addClass(toggleClass);
-                } else if (_this.attr('data-toggle-type') !== 'undefined' && _this.attr('data-toggle-type') == "off") {
+                } else if ($this.attr('data-toggle-type') !== 'undefined' && $this.attr('data-toggle-type') == 'off') {
                     toggleElement.removeClass(toggleClass);
                 } else {
                     toggleElement.toggleClass(toggleClass);
                 }
                 e.preventDefault();
-                if (_this.attr('data-toggle-click-outside')) {
+                if ($this.attr('data-toggle-click-outside')) {
 
-                    outsideElement = $(_this.attr('data-toggle-click-outside'));
-                    $(document).on("mousedown touchstart", toggleOutside);
+                    outsideElement = $($this.attr('data-toggle-click-outside'));
+                    $(document).on('mousedown touchstart', toggleOutside);
 
                 };
 
@@ -58,7 +58,7 @@ var Main = function () {
                     !toggleAttribute.is(e.target) && toggleElement.hasClass(toggleClass)) {
 
                     toggleElement.removeClass(toggleClass);
-                    $(document).off("mousedown touchstart", toggleOutside);
+                    $(document).off('mousedown touchstart', toggleOutside);
                 }
             };
 
@@ -78,48 +78,48 @@ var Main = function () {
                 height: 'auto'
             });
         };
-        $(document).on("mousedown touchstart", toggleNavbar);
+        $(document).on('mousedown touchstart', toggleNavbar);
 
         function toggleNavbar(e) {
             if (navbar.has(e.target).length === 0 //checks if descendants of $box was clicked
                 &&
                 !navbar.is(e.target) //checks if the $box itself was clicked
                 &&
-                navbar.parent().hasClass("collapse in")) {
-                collapseButton.trigger("click");
+                navbar.parent().hasClass('collapse in')) {
+                collapseButton.trigger('click');
                 //$(document).off("mousedown touchstart", toggleNavbar);
             }
         };
     };
 
     var resizeHandler = function (func, threshold, execAsap) {
-        $(window).resize(function () {
+        $(window).on('resize', function () {
             navbarHandler();
         });
     };
 
-    function isSmallDevice() {
+    function isSmallDevice () {
         return $win.width() < MEDIAQUERY.desktop;
     }
 
     var goTopHandler = function (e) {
         $('.go-top').on('click', function (e) {
-            $("html, body").animate({
+            $('html, body').animate({
                 scrollTop: 0
-            }, "slow");
+            }, 'slow');
             e.preventDefault();
         });
     };
 
 
     var perfectScrollbarHandler = function () {
-        pScroll = $(".perfect-scrollbar");
+        pScroll = $('.perfect-scrollbar');
 
         if (!isMobile() && pScroll.length) {
             pScroll.perfectScrollbar({
                 suppressScrollX: true
             });
-            pScroll.on("mousemove", function () {
+            pScroll.on('mousemove', function () {
                 $(this).perfectScrollbar('update');
             });
         }
@@ -133,15 +133,19 @@ var Main = function () {
             var $this = $(e.currentTarget);
             var idMap = $this.attr('data-popup');
             var statusCard = $this.attr('data-point');
+            var currentId = $this.attr('data-id');
             var currentCard;
 
             idModal = $this.attr('data-target');
-            dataCoordinates = $this.attr('data-coordinates');
             $(idModal).modal();
-            
+
             if (idMap !== '' && window.dataMap != undefined) {
-                currentCard = $this.parents('.purchase-list__item');
-                window.popupMap.init(idMap, window.dataMap, currentCard, statusCard);
+                currentCard = $this.parents('.purchase-item');
+                if (window.popupMap.eMap !== null) {
+                    window.popupMap.map.init(idMap, window.dataMap, currentCard, statusCard, currentId);
+                } else {
+                    window.popupMap.init(idMap, window.dataMap, currentCard, statusCard, currentId);
+                }
             }
         });
 
@@ -171,6 +175,13 @@ var Main = function () {
                 window.popupMapSingle.destroy(idModal);
             }
         });
+
+        $(window).on('resize', function () {
+            if ($('.map-wrap__content').is(':visible')) {
+                $(idModal).find('.close').trigger('click');
+                $(idModal).find('.map-wrap__nav').removeClass('is-open');
+            }
+        });
     };
 
     window.popupMap = {
@@ -180,8 +191,11 @@ var Main = function () {
         ePlacemarkArray: [],
         apiScroll: [],
         tpl: '',
+        pScroll: null,
+        curid: null,
         buildAddressList: function () {
             var html = "";
+            var listItem;
 
             html += '<ul class="map-wrap__nav-list">';
             for (var i = 0; i < window.popupMap.eData.length; i++) {
@@ -194,14 +208,27 @@ var Main = function () {
             }
             html += '</ul>';
 
-            var pScroll = $('.map-wrap__nav-scrollbar');
-            pScroll.html(html);
-            pScroll.perfectScrollbar({
-                suppressScrollX: true
+            window.popupMap.pScroll = $('.map-wrap__nav-scrollbar');
+            window.popupMap.pScroll.html(html);
+            window.popupMap.pScroll.perfectScrollbar({
+                suppressScrollX: true,
+                minScrollbarLength: 20
             });
-            pScroll.on("mousemove", function () {
+
+            window.popupMap.pScroll.on("mousemove", function () {
                 $(this).perfectScrollbar('update');
             });
+
+            if (window.popupMap.map.status == 'edit') {
+                listItem = $('#' + window.popupMap.map.id).parents('.modal').find('.map-wrap__nav-list-item[data-id="' + window.popupMap.curid + '"]');
+                listItem.addClass('is-active');
+                $('#' + window.popupMap.map.id).parents('.modal').find('.js-map-cover').text(listItem.find('.map-wrap__nav-title').text());
+            }
+
+            if (window.popupMap.map.status == 'add') {
+                $('#' + window.popupMap.map.id).parents('.modal').find('.js-map-cover').text('Выберите адрес');
+            }
+
         },
 
         destroy: function (id) {
@@ -214,17 +241,34 @@ var Main = function () {
         },
 
         clickMapList: function () {
-            $('.map-wrap__nav-list').on('click', '.map-wrap__nav-list-item', function () {
+            $(document).on('click', '.map-wrap__nav-list .map-wrap__nav-list-item', function () {
                 var id = $(this).attr('data-id');
                 var placemark = window.popupMap.ePlacemarkArray[id - 1];
+                var parentEl = $(this).parents('.map-wrap__nav');
                 var list = $(this).parents('.map-wrap__nav-list');
 
                 if (!$(this).hasClass('is-active')) {
                     list.find('.is-active').removeClass('is-active');
                     $(this).addClass('is-active');
+                    parentEl.removeClass('is-open');
+                    parentEl.find('.js-map-cover').empty().text($(this).find('.map-wrap__nav-title').text());
                     window.popupMap.eMap.setZoom(15);
                     window.popupMap.eMap.setCenter(placemark.geometry.getCoordinates());
                     placemark.balloon.open();
+                }
+            });
+
+            $(document).on('click', '.js-map-cover', function (e) {
+                var $this, parentEl;
+                
+                $this = $(e.currentTarget);
+                parentEl = $this.parents('.map-wrap__nav');
+                
+                if (parentEl.hasClass('is-open')) {
+                    parentEl.removeClass('is-open');
+                } else {
+                    parentEl.addClass('is-open');
+                    window.popupMap.pScroll.perfectScrollbar('update');
                 }
             });
         },
@@ -247,6 +291,7 @@ var Main = function () {
                     $('.js-map-title', window.popupMap.map.selector).html(series['title']);
                     $('.js-map-address', window.popupMap.map.selector).html(series['city'] + ', ' + series['address']);
                     $('.js-map-time', window.popupMap.map.selector).html(series['time']);
+                    $('.js-show-modal-single', window.popupMap.map.selector).attr('data-id', id);
                 }
 
                 if (statusLink == 'add') {
@@ -269,8 +314,11 @@ var Main = function () {
                             '<div class="purchase-item__map-list-text js-map-address">' + series['address'] + '</div>' +
                             '</div>';
                     }
+                    
+                    $(window.popupMap.map.selector).find('.js-show-modal-single').show();
+                    $(tpl).insertAfter($(window.popupMap.map.selector).find('.js-show-modal').attr('data-point', 'edit').attr('data-id', id).removeClass('is-danger').addClass('is-info').empty().text('Изменить').parent());
 
-                    $(tpl).insertAfter($(window.popupMap.map.selector).find('.js-show-modal').attr('data-point', 'edit').removeClass('is-danger').addClass('is-info').empty().text('Изменить').parent());
+                    // TODO: ajax request save selected ID
 
                 }
 
@@ -312,15 +360,10 @@ var Main = function () {
                                 clusterize: true,
                                 balloonContentLayout: MyBalloonContentLayoutClass,
                                 balloonMaxWidth: 260,
-                                // Своё изображение иконки метки.
                                 iconLayout: 'default#image',
-                                // Своё изображение иконки метки.
                                 iconImageHref: "/assets/images/map-placemark.png",
-                                // Размеры метки.
                                 iconImageSize: [38, 39],
-                                // Смещение левого верхнего угла иконки относительно
-                                // её "ножки" (точки привязки).
-                                iconImageOffset: [-14, -39] // смещение иконки метки
+                                iconImageOffset: [-14, -39]
                             });
                             window.popupMap.ePlacemarkArray.push(placemark);
                         }
@@ -337,7 +380,13 @@ var Main = function () {
                 window.popupMap.eMap.geoObjects.add(window.popupMap.clusterer);
             },
 
-            init: function (id) {
+            init: function (id, data, selector, status, curid) {
+                window.popupMap.eData = data;
+                window.popupMap.map.id = id;
+                window.popupMap.map.selector = selector;
+                window.popupMap.map.status = status;
+                window.popupMap.curid = curid;
+
                 window.popupMap.eMap = new ymaps.Map(id, {
                     center: [55.76, 37.64],
                     zoom: 10,
@@ -355,33 +404,16 @@ var Main = function () {
 
                 window.popupMap.eMap.behaviors.disable('scrollZoom');
                 window.popupMap.map.addPlacemarks();
+                window.popupMap.buildAddressList();
             }
         },
-        changeSalon: function () {
-            $('.js-record-offices-change').on('click', function () {
-                $('html, body').animate({
-                    scrollTop: $('.offices-map').offset().top
-                }, 500, 'linear', function () {
-                    $('.offices-map-info').slideUp(200);
-                    //$('.js-recording-form-opener').removeClass('active').text('Записаться на обслуживание');
-                });
-                return false;
-            });
-        },
 
-        init: function (id, data, selector, status) {
-            window.popupMap.eData = data;
-            window.popupMap.map.id = id;
-            window.popupMap.map.selector = selector;
-            window.popupMap.map.status = status;
-
+        init: function (id, data, selector, status, curid) {
             ymaps.load(function () {
-                window.popupMap.map.init(id);
+                window.popupMap.map.init(id, data, selector, status);
             });
 
-            window.popupMap.buildAddressList();
             window.popupMap.clickMapList();
-            window.popupMap.changeSalon();
             $(document).on('click', '.js-add-address', window.popupMap.map.openForm);
         }
     }

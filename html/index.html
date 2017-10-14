@@ -160,8 +160,8 @@
                             <div class="purchase-item__list-row">
                               <div class="purchase-item__map-list">
                                 <div class="purchase-item__map-list-label">Пункт выдачи заказа:</div>
-                                <div id="card-id-1-1" data-target="#popup-map" data-popup="map-wrap" data-point="add" class="purchase-item__map-list-handler is-danger js-show-modal">Не выбрано</div>
-                                <div data-target="#popup-map-single" data-popup="map-wrap-single" data-id="2" class="purchase-item__map-list-handler is-warning js-show-modal-single">Карта</div>
+                                <div id="card-id-1-1" data-target="#popup-map" data-popup="map-wrap" data-point="add" data-id="" class="purchase-item__map-list-handler is-danger js-show-modal">Не выбрано</div>
+                                <div data-target="#popup-map-single" data-popup="map-wrap-single" data-id="2" style="display: none" class="purchase-item__map-list-handler is-warning js-show-modal-single">Карта</div>
                               </div>
                             </div>
                           </div>
@@ -214,8 +214,8 @@
                             <div class="purchase-item__list-row">
                               <div class="purchase-item__map-list">
                                 <div class="purchase-item__map-list-label">Пункт выдачи заказа:</div>
-                                <div id="card-id-1-2" data-target="#popup-map" data-popup="map-wrap" data-point="add" class="purchase-item__map-list-handler is-danger js-show-modal">Не выбрано</div>
-                                <div data-target="#popup-map-single" data-popup="map-wrap-single" data-id="" class="purchase-item__map-list-handler is-warning js-show-modal-single">Карта</div>
+                                <div id="card-id-1-2" data-target="#popup-map" data-popup="map-wrap" data-point="add" data-id="" class="purchase-item__map-list-handler is-danger js-show-modal">Не выбрано</div>
+                                <div data-target="#popup-map-single" data-popup="map-wrap-single" data-id="" style="display: none" class="purchase-item__map-list-handler is-warning js-show-modal-single">Карта</div>
                               </div>
                             </div>
                           </div>
@@ -282,8 +282,19 @@
                             <div class="purchase-item__list-row">
                               <div class="purchase-item__map-list">
                                 <div class="purchase-item__map-list-label">Пункт выдачи заказа:</div>
-                                <div id="card-id-2-1" data-target="#popup-map" data-popup="map-wrap" data-point="edit" class="purchase-item__map-list-handler is-info js-show-modal">Изменить</div>
+                                <div id="card-id-2-1" data-target="#popup-map" data-popup="map-wrap" data-point="edit" data-id="2" class="purchase-item__map-list-handler is-info js-show-modal">Изменить</div>
                                 <div data-target="#popup-map-single" data-popup="map-wrap-single" data-id="4" class="purchase-item__map-list-handler is-warning js-show-modal-single">Карта</div>
+                              </div>
+                              <div class="purchase-item__map-list">
+                                <div class="purchase-item__map-list-title js-map-title">Офис Бежицкий район</div>
+                              </div>
+                              <div class="purchase-item__map-list">
+                                <div class="purchase-item__map-list-label">Время работы:</div>
+                                <div class="purchase-item__map-list-text js-map-time">пн-вс: с 9:00 до 21:00</div>
+                              </div>
+                              <div class="purchase-item__map-list">
+                                <div class="purchase-item__map-list-label">Адрес:</div>
+                                <div class="purchase-item__map-list-text js-map-address">Москва, Череповецкая улица, 17</div>
                               </div>
                             </div>
                           </div>
@@ -322,7 +333,10 @@
                       <div id="map-wrap" style="width: 100%; height: 100%"></div>
                     </div>
                     <div class="map-wrap__nav">
-                      <div class="map-wrap__nav-scrollbar">
+                      <div class="map-wrap__nav-cover js-map-cover">Выберите адрес</div>
+                      <div class="map-wrap__nav-content">
+                        <div class="map-wrap__nav-scrollbar">
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -339,7 +353,7 @@
                 </div>
                 <div class="modal-body">
                   <div class="map-wrap">
-                    <div id="map-wrap-single" style="width: 100%; height: 400px"></div>
+                    <div id="map-wrap-single" style="width: 100%; height: 100%"></div>
                   </div>
                 </div>
               </div>

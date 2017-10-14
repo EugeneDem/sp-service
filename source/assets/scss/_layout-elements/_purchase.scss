@@ -161,10 +161,6 @@
 
     &__map-list {
         @include clearfix();
-
-        @media (max-width: $screen-xs-max) {
-            font-size: 0.85rem;
-        }
     }
 
     &__map-list + &__map-list {

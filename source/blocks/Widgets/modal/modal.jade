@@ -9,15 +9,17 @@
 					.map-wrap__content
 						#map-wrap(style='width: 100%; height: 100%')
 					.map-wrap__nav
-						.map-wrap__nav-scrollbar
-							//- ul.map-wrap__nav-list
-							//- 	each value, ind in listMap
-							//- 		li.map-wrap__nav-list-item(data-id=(ind+1) class=(ind == 1) ? "is-active" : "")
-							//- 			.map-wrap__nav-title!= value.city
-							//- 			if(value.address)
-							//- 				.map-wrap__nav-text!= value.address
-							//- 			if(value.time)
-							//- 				.map-wrap__nav-text!= value.time
+						.map-wrap__nav-cover.js-map-cover Выберите адрес
+						.map-wrap__nav-content
+							.map-wrap__nav-scrollbar
+								//- ul.map-wrap__nav-list
+								//- 	each value, ind in listMap
+								//- 		li.map-wrap__nav-list-item(data-id=(ind+1) class=(ind == 1) ? "is-active" : "")
+								//- 			.map-wrap__nav-title!= value.city
+								//- 			if(value.address)
+								//- 				.map-wrap__nav-text!= value.address
+								//- 			if(value.time)
+								//- 				.map-wrap__nav-text!= value.time
 #popup-map-single.modal.fade
 	.modal-dialog.modal-lg
 		.modal-content
@@ -26,4 +28,4 @@
 				button.close(type="button" data-dismiss="modal" aria-hidden="true") ×
 			.modal-body
 				.map-wrap
-					#map-wrap-single(style='width: 100%; height: 400px')
+					#map-wrap-single(style='width: 100%; height: 100%')
